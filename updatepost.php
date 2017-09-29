@@ -52,7 +52,28 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <input type="submit" class="btn btn-success btn-lg pull-right" value="Ajouter un post">
+                    <input type="submit" class="btn btn-primary btn-lg pull-right" value="Modifier le post">
+                    <input type="submit" class="btn btn-danger btn-lg pull-right" value="Supprimer le post" data-toggle="modal" data-target="#suppressModal" style="margin-right: 4px;">
+                    <!-- Modal -->
+                    <div class="modal fade" id="suppressModal" tabindex="-1" role="dialog" aria-labelledby="suppressModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="suppressModalLabel">Suppression de post</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>Etes-vous certain(e) de vouloir supprimer le post?</div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+                                    <button type="button" class="btn btn-danger">Oui</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
