@@ -17,23 +17,29 @@
 <div class="container w">
     <div class="row centered">
         <br><br>
-        <div class="col-lg-4">
+        <div class="col-md-3">
             <i class="fa fa-desktop"></i>
             <h4>HTML / CSS</h4>
             <p>Pour structurer et embellir les pages web</p>
-        </div><!-- col-lg-4 -->
+        </div>
 
-        <div class="col-lg-4">
-            <i class="fa fa-tablet"></i>
+        <div class="col-md-3">
+            <i class="fa fa-mobile" aria-hidden="true"></i>
             <h4>BOOTSTRAP</h4>
-            <p>Pour organiser les pages web en fonction de la grille BootStrap</p>
-        </div><!-- col-lg-4 -->
+            <p>Pour organiser les pages web en fonction de la grille BootStrap et que le site soit facilement responsive</p>
+        </div>
 
-        <div class="col-lg-4">
+        <div class="col-md-3">
             <i class="fa fa-laptop"></i>
             <h4>PHP / SQL</h4>
             <p>Pour rendre le site dynamique et le faire intéragir avec sa base de données</p>
-        </div><!-- col-lg-4 -->
+        </div>
+
+        <div class="col-md-3">
+            <i class="fa fa-tablet"></i>
+            <h4>WORDPRESS</h4>
+            <p>Pour que vous puissiez aisément vous occuper vous-même de votre site responsive</p>
+        </div>
     </div><!-- row -->
     <br>
     <br>

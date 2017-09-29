@@ -36,7 +36,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php"><i class="fa fa-camera-retro" aria-hidden="true"></i> DAMIEN VAUCHEL <i class="fa fa-code" aria-hidden="true"></i></a>
+                <a class="navbar-brand" href="index.php">&lt;?php DAMIEN VAUCHEL ?&gt;</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
