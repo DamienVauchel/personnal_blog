@@ -98,13 +98,6 @@
         </div>
         <br>
         <div class="form-group row">
-            <label for="tel" class="col-sm-2 col-form-label">Téléphone</label>
-            <div class="col-sm-10">
-                <input type="tel" class="form-control" name="tel" id="tel" placeholder="Tapez votre numéro de téléphone">
-            </div>
-        </div>
-        <br>
-        <div class="form-group row">
             <label for="subject" class="col-sm-2 col-form-label">Sujet</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="subject" id="subject" placeholder="Objet du message">
