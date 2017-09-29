@@ -1,4 +1,4 @@
-<?php require "view/header.php"; ?>
+<?php require "header.php"; ?>
 
     <div id="blue">
         <div class="container">
@@ -20,7 +20,7 @@
         <div class="row thumbnail">
             <br><br>
             <div class="col-xs-12">
-                <img src="assets/img/p03.png" alt="" style="width: 100%;"> <!-- IMAGE A LA UNE -->
+                <img src="../assets/img/p03.png" alt="" style="width: 100%;"> <!-- IMAGE A LA UNE -->
             </div>
             <br>
             <div class="col-xs-12">
@@ -34,4 +34,4 @@
         </div><!-- row -->
     </div>
 
-<?php require "view/footer.php"; ?>
+<?php require "footer.php"; ?>

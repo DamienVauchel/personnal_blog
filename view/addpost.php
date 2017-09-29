@@ -1,4 +1,4 @@
-<?php require "view/header.php"; ?>
+<?php require "header.php"; ?>
 
 <div id="blue">
 		<div class="container">
@@ -49,4 +49,4 @@
         </div>
     </div><!-- container -->
 
-<?php require "view/footer.php"; ?>
+<?php require "footer.php"; ?>

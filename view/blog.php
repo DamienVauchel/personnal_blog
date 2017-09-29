@@ -1,4 +1,4 @@
-<?php require "view/header.php"; ?>
+<?php require "header.php"; ?>
 
 <div id="blue">
     <div class="container">
@@ -20,7 +20,7 @@
         <div class="row thumbnail">
             <br><br>
             <div class="col-md-6">
-                <img src="assets/img/p03.png" alt="" style="max-width: 100%;">
+                <img src="../assets/img/p03.png" alt="" style="max-width: 100%;">
             </div><!-- col-lg-6 -->
             <div class="col-md-6">
                 <h2 class="text-center"><b>TITRE DU BLOG POST</b></h2>
@@ -37,4 +37,4 @@
 <!--    FIN MODELE-->
 </div>
 
-<?php require "view/footer.php"; ?>
+<?php require "footer.php"; ?>
