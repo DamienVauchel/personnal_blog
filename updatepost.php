@@ -1,88 +1,61 @@
 <?php require "view/header.php"; ?>
 
-<div id="blue">
-    <div class="container">
-        <div class="row centered">
-            <div class="col-lg-8 col-lg-offset-2">
-            <h4>WE WORK HARD TO ACHIEVE EXCELLENCE</h4>
-            <p>AND WE ARE HAPPY TO DO IT</p>
-            </div>
-        </div><!-- row -->
+    <div id="blue">
+        <div class="container">
+            <div class="row centered">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h1><b>MODIFIER UN BLOG POST</b></h1>
+                </div>
+            </div><!-- row -->
+        </div><!-- container -->
+    </div><!-- blue wrap -->
+
+
+    <div class="container w">
+        <div class="container" id="addpost">
+            <form class="form" method="post" action="updatepost.php" enctype="multipart/form-data">
+                <div class="form-group row">
+                    <label for="post-id" class="col-sm-2 col-form-label">Choisissez le post à modifier</label>
+                    <div class="col-sm-10">
+                        <select name="post-id" id="post-id">
+                            <option value="1">Titre du post 1</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label for="titre" class="col-sm-2 col-form-label">Titre du post</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="titre" id="titre" placeholder="Tapez le titre du post">
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label for="auteur" class="col-sm-2 col-form-label">Auteur</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="auteur" id="auteur" placeholder="Tapez le nom de l'Auteur">
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label for="photo" class="col-sm-2 col-form-label">Photo du post (.jpg ou .png)</label>
+                    <div class="col-sm-10">
+                        <input type="file" class="form-control-file" name="photo" id="photo">
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label for="contenu" class="col-sm-2 col-form-label">Contenu du post</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control animated" placeholder="Tapez votre contenu ici" rows="10"></textarea>
+                        <small><em>Le cadre peut être redimensionné</em></small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <input type="submit" class="btn btn-success btn-lg pull-right" value="Ajouter un post">
+                </div>
+            </form>
+        </div>
     </div><!-- container -->
-</div><!--  bluewrap -->
-
-
-<div class="container desc">
-    <div class="row">
-        <br><br>
-        <div class="col-lg-6 centered">
-            <img src="assets/img/p03.png" alt="">
-        </div><!-- col-lg-6 -->
-        <div class="col-lg-6">
-            <h4>CLIENT NAME</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-            <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-            <p>
-                <i class="fa fa-circle-o"></i> Mobile Design<br/>
-                <i class="fa fa-circle-o"></i> Web Design<br/>
-                <i class="fa fa-circle-o"></i> Development<br/>
-                <i class="fa fa-link"></i> <a href="#">BlackTie.co</a>
-            </p>
-        </div>
-    </div><!-- row -->
-
-    <br><br>
-    <hr>
-    <br><br>
-    <div class="row">
-        <div class="col-lg-6 centered">
-            <img src="assets/img/p01.png" alt="">
-        </div><!-- col-lg-6 -->
-        <div class="col-lg-6">
-            <h4>CLIENT NAME</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-            <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-            <p>
-                <i class="fa fa-circle-o"></i> Mobile Design<br/>
-                <i class="fa fa-circle-o"></i> Web Design<br/>
-                <i class="fa fa-circle-o"></i> Development<br/>
-                <i class="fa fa-link"></i> <a href="#">BlackTie.co</a>
-            </p>
-        </div>
-    </div><!-- row -->
-
-    <br><br>
-    <hr>
-    <br><br>
-    <div class="row">
-        <div class="col-lg-6 centered">
-            <img src="assets/img/p02.png" alt="">
-        </div><!-- col-lg-6 -->
-        <div class="col-lg-6">
-            <h4>CLIENT NAME</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-            <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-            <p>
-                <i class="fa fa-circle-o"></i> Mobile Design<br/>
-                <i class="fa fa-circle-o"></i> Web Design<br/>
-                <i class="fa fa-circle-o"></i> Development<br/>
-                <i class="fa fa-link"></i> <a href="#">BlackTie.co</a>
-            </p>
-        </div>
-    </div><!-- row -->
-    <br><br>
-</div><!-- container -->
-
-
-<div id="r">
-    <div class="container">
-        <div class="row centered">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h4>WE ARE STORYTELLERS. BRANDS ARE OUR SUBJECTS. DESIGN IS OUR VOICE.</h4>
-                <p>We believe ideas come from everyone, everywhere. At BlackTie, everyone within our agency walls is a designer in their own right. And there are a few principles we believe—and we believe everyone should believe—about our design craft. These truths drive us, motivate us, and ultimately help us redefine the power of design.</p>
-            </div>
-        </div><!-- row -->
-    </div><!-- container -->
-</div><! -- r wrap -->
 
 <?php require "view/footer.php"; ?>
