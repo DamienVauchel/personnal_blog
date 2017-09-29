@@ -1,4 +1,5 @@
 <?php
+require_once "db_cnx.php";
 
-$db = new PDO('mysql:host=localhost;dbname=personnal_blog', $user, $pass);
+$db = new PDO($cnx, $user, $pass);
 
