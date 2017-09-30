@@ -81,7 +81,7 @@
     <h4 class="text-center">Pour les questions d'ordre général, vous pouvez utiliser le formulaire ci-joint.</h4>
     <h4 class="text-center">Je vous répondrez dès que possible.</h4>
     <br>
-    <div class="form">
+    <form class="form" action="index.php" method="post" autocomplete="off">
         <div class="form-group row">
             <label for="nom" class="col-sm-2 col-form-label">Nom</label>
             <div class="col-sm-10">
@@ -112,14 +112,14 @@
         <div class="form-group row">
             <label for="message" class="col-sm-2 col-form-label">Votre message</label>
             <div class="col-sm-10">
-                <textarea class="form-control animated" placeholder="Tapez votre message ici" rows="10"></textarea>
+                <textarea name="message" class="form-control animated" placeholder="Tapez votre message ici" rows="10"></textarea>
                 <small><em>Le cadre peut être redimensionné</em></small>
             </div>
         </div>
         <div class="form-group row">
-            <input type="submit" class="btn btn-default btn-lg pull-right" value="Envoyer le message">
+            <input type="submit" name="sendmsg" class="btn btn-default btn-lg pull-right" value="Envoyer le message">
         </div>
-    </div>
+    </form>
 </div>
 <!--                    FIN CONTACT                                                    -->      
 

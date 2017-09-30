@@ -1,3 +1,5 @@
+<?php require "../controller/contact.php";?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
