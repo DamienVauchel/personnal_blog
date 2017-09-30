@@ -9,7 +9,7 @@ if(!empty($_POST)) {
     $contenu            =       checkInput($_POST['contenu']);
     $auteur             =       checkInput($_POST['auteur']);
     $photo              =       checkInput($_FILES['photo']['name']);
-    $photoPath          =       "../assets/img/" . basename($photo); // Chemin de l'image
+    $photoPath          =       "../assets/post_photo/" . basename($photo); // Chemin de l'image
     $photoExtension     =       pathinfo($photoPath, PATHINFO_EXTENSION);
     $isSuccess          =       true;
     $isUploadSuccess    =       false;
