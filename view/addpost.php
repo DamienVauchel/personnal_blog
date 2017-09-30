@@ -1,4 +1,22 @@
 <?php require "header.php"; ?>
+<?php
+require "../db_cnx.php";
+require "../model/admin/db.php";
+if (isset($_POST["addPost"]))
+{
+    $titre = $_POST["titre"];
+    $auteur = $_POST["auteur"];
+    $contenu = $_POST["contenu"];
+    $date_creation = time();
+    $chapo = substr($_POST["contenu"], 0, 200);
+    $q = "  INSERT INTO post(titre, contenu, , chapo, auteur, date_creation)
+            VALUES ($titre, $contenu, $chapo, $auteur, $date_creation);";
+
+    $db->query($q);
+}
+
+?>
+
 
 <div id="blue">
 		<div class="container">
@@ -38,12 +56,12 @@
                 <div class="form-group row">
                     <label for="contenu" class="col-sm-2 col-form-label">Contenu du post</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control animated" placeholder="Tapez votre contenu ici" rows="10"></textarea>
+                        <textarea name="contenu" class="form-control animated" placeholder="Tapez votre contenu ici" rows="10"></textarea>
                         <small><em>Le cadre peut être redimensionné</em></small>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <input type="submit" class="btn btn-success btn-lg pull-right" value="Ajouter un post">
+                    <input type="submit" class="btn btn-success btn-lg pull-right" name="addPost" value="Ajouter un post">
                 </div>
             </form>
         </div>

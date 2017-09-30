@@ -61,6 +61,6 @@ class Post
     // SETTERS
     public function setAuthor()
     {
-        
+
     }
 }
