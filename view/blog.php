@@ -13,28 +13,42 @@
 
 
 <div class="container desc">
-    <!--############################################################################
-     ### MODELE POUR UN ARTICLE A ENTRER DANS UNE BOUCLE POUR TOUS LES AFFICHER ####
-     ###############################################################################-->
-    <a href="blog_post.php">
-        <div class="row thumbnail">
-            <br><br>
-            <div class="col-md-6">
-                <img src="../assets/img/p03.png" alt="" style="max-width: 100%;">
-            </div><!-- col-lg-6 -->
-            <div class="col-md-6">
-                <h2 class="text-center"><b>TITRE DU BLOG POST</b></h2>
-                <div class="text-right"><small style="text-decoration: underline;"><i class="fa fa-clock-o" aria-hidden="true"></i> Date de dernière mise à jour: 29/09/2017</small></div>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                <p class="text-right"><a href="#">... Lire l'article</a></p>
+    <?php
+    require '../model/admin/db.php';
+    $db = Database::connect();
+    $statement = $db -> query("   SELECT *
+                                  FROM post
+                                  ORDER BY date_creation");
+
+    while ($post = $statement->fetch()) { ?>
+        <a href="blog_post.php?id=<?php echo $post["id"]; ?>">
+            <div class="row thumbnail">
+                <br><br>
+                <div class="col-md-6">
+                    <img src="../assets/post_photo/<?php echo $post["photo"]; ?>" alt="" style="max-width: 100%;">
+                </div>
+                <div class="col-md-6">
+                    <h2 class="text-center"><b><?php echo strtoupper($post["titre"]); ?></b></h2>
+                    <div class="text-right">
+                        <small style="text-decoration: underline;">
+                            <i class="fa fa-clock-o" aria-hidden="true"></i> Date de dernière mise à jour: <?php echo $post["date_creation"]; ?>
+                        </small>
+                    </div>
+                <p>
+                    <?php echo substr($post["contenu"], 0, 200)."..."; ?>
+                </p>
+                <p class="text-right"><a href="blog_post.php?id=<?php echo $post["id"]; ?>">... Lire l'article</a></p>
             </div>
             <br><br>
         </div><!-- row -->
     </a>
 
     <hr>
-<!--    FIN MODELE-->
+    <?php
+    }
+
+    Database::disconnect();
+    ?>
 </div>
 
 <?php require "footer.php"; ?>
