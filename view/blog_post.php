@@ -31,6 +31,7 @@ if(isset($_POST["suppr"]))
     $statement->execute(array($id));
 
     Database::disconnect();
+    header("Location: blog.php");
 }
 ?>
 
@@ -40,15 +41,22 @@ if(isset($_POST["suppr"]))
                 <div class="col-lg-8 col-lg-offset-2">
                     <h1 class="text-center"><b><?php echo $post["titre"]; ?></b></h1>
                     <div class="text-right">
-                        <div><b>Ecrit par: <?php echo $post["auteur"]; ?></b>
-                            <div style="text-decoration: underline; font-weight: bold;"><i class="fa fa-clock-o" aria-hidden="true"></i> Date de dernière mise à jour: <?php   if($post["date_modif"] != null)
-                                                                                                                                    {
-                                                                                                                                        echo $post["date_modif"];
-                                                                                                                                    }
-                                                                                                                                    else
-                                                                                                                                    {
-                                                                                                                                        echo $post["date_creation"];
-                                                                                                                                    }?>
+                        <div><b><?php   if($post["date_modif"] != null)
+                                        {
+                                            echo "Mis à jour";
+                                        }
+                                        else
+                                        {
+                                            echo "Ecrit";
+                                        }?> par: <?php echo $post["auteur"]; ?></b>
+                            <div style="text-decoration: underline; font-weight: bold;"><i class="fa fa-clock-o" aria-hidden="true"></i> Date de la dernière mise à jour: <?php   if($post["date_modif"] != null)
+                                                                                                                                        {
+                                                                                                                                            echo $post["date_modif"];
+                                                                                                                                        }
+                                                                                                                                        else
+                                                                                                                                        {
+                                                                                                                                            echo $post["date_creation"];
+                                                                                                                                        }?>
                             </div>
                         </div>
                     </div>
@@ -87,9 +95,9 @@ if(isset($_POST["suppr"]))
                             <div>Etes-vous certain(e) de vouloir supprimer le post?</div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
-                            <form action="blog.php" method="post">
+                            <form action="blog_post.php?id=<?php echo $id; ?>" method="post">
                                 <input type="submit" class="btn btn-danger" name="suppr" value="Oui">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
                             </form>
                         </div>
                     </div>
