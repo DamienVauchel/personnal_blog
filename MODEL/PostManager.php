@@ -31,8 +31,14 @@ class PostManager
         $statement = $this->database->query("   SELECT *
                                                 FROM post
                                                 ORDER BY date_creation DESC");
-        $datas = $statement->fetch();
-        $list = new Post($datas);
-        return $list;
+        return $statement;
+    }
+
+    public function getIdForList()
+    {
+        $statement = $this->database->query("   SELECT id
+                                                FROM post");
+        $id = $statement->fetch();
+        return $id;
     }
 }

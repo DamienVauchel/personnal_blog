@@ -1,7 +1,6 @@
 <?php
 require "header.php";
 require "../CONTROLLER/PostController.php";
-require '../MODEL/admin/db.php';
 
 $post_controller = new PostController();
 ?>

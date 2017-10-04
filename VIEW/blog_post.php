@@ -4,18 +4,7 @@ require "../CONTROLLER/PostController.php";
 
 $post_controller = new PostController();
 $post = $post_controller->getPost();
-
-if(isset($_POST["suppr"]))
-{
-    $db = Database::connect();
-    $statement = $db->prepare(" DELETE
-                                FROM post
-                                WHERE id = ?");
-    $statement->execute(array($id));
-
-    Database::disconnect();
-    header("Location: blog.php");
-}
+$post_controller->supprPost();
 ?>
 
     <div id="blue">

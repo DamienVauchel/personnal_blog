@@ -1,11 +1,17 @@
 <?php
 require "../MODEL/PostManager.php";
+require '../MODEL/admin/db.php';
 class PostController
 {
     public function getPost()
     {
-        if(!empty($_GET['id'])) {
+        if(!empty($_GET['id']))
+        {
             $id = checkinput($_GET['id']);
+        }
+        else
+        {
+            $id = 1;
         }
 
         $db = Database::connect();
@@ -14,14 +20,39 @@ class PostController
         return $post;
     }
 
+    public function supprPost()
+    {
+        if(!empty($_GET['id']))
+        {
+            $id = checkinput($_GET['id']);
+        }
+
+        if(isset($_POST["suppr"]))
+        {
+            $db = Database::connect();
+            $statement = $db->prepare(" DELETE
+                                FROM post
+                                WHERE id = ?");
+            $statement->execute(array($id));
+
+            Database::disconnect();
+            header("Location: blog.php");
+        }
+    }
+
     public function getList()
     {
         $db = Database::connect();
         $post_manager = new PostManager($db);
-        $list = $post_manager->view_list();
+        $statement = $post_manager->view_list();
 
         // AFFICHAGE DE TOUS LES ARTICLES DU BLOG
-        while ($post = $list) { ?>
+        while ($post = $statement->fetch())
+        {
+            $post_controller = new PostController();
+            $id = $post_manager->getIdForList();
+            $post = $post_controller->getPost($id);
+            ?>
             <a href="blog_post.php?id=<?= $post->getId(); ?>">
                 <div class="row thumbnail">
                     <br><br>
