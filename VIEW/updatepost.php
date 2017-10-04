@@ -1,6 +1,6 @@
 <?php require "header.php"; ?>
 <?php
-require "../model/admin/db.php";
+require "../MODEL/admin/db.php";
 
 if(!empty($_GET['id']))
 {
@@ -110,7 +110,7 @@ function checkInput($data)
 }
 ?>
 <?php
-//require '../model/admin/db.php';
+//require '../MODEL/admin/db.php';
 //
 //$titreErreur = $contenuErreur = $auteurErreur = $photoErreur = $titre = $contenu = $auteur = $photo = "";
 //

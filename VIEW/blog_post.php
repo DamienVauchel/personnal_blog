@@ -1,7 +1,7 @@
 <?php
 require "header.php";
-require "../model/PostManager.php";
-require '../model/admin/db.php';
+require "../MODEL/PostManager.php";
+require '../MODEL/admin/db.php';
 
 if(!empty($_GET['id'])) {
     $id = checkinput($_GET['id']);

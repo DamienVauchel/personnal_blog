@@ -14,7 +14,7 @@
 
 <div class="container desc">
     <?php
-    require '../model/admin/db.php';
+    require '../MODEL/admin/db.php';
     $db = Database::connect();
     $statement = $db -> query("   SELECT *
                                   FROM post
