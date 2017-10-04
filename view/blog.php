@@ -18,7 +18,7 @@
     $db = Database::connect();
     $statement = $db -> query("   SELECT *
                                   FROM post
-                                  ORDER BY date_creation");
+                                  ORDER BY date_creation DESC");
 
     // AFFICHAGE DE TOUS LES ARTICLES DU BLOG
     while ($post = $statement->fetch()) { ?>
@@ -32,7 +32,14 @@
                     <h2 class="text-center"><b><?php echo strtoupper($post["titre"]); ?></b></h2>
                     <div class="text-right">
                         <small style="text-decoration: underline;">
-                            <i class="fa fa-clock-o" aria-hidden="true"></i> Date de dernière mise à jour: <?php echo $post["date_creation"]; ?>
+                            <i class="fa fa-clock-o" aria-hidden="true"></i> Date de dernière mise à jour: <?php if($post["date_modif"] != null)
+                                                                                                                  {
+                                                                                                                      echo $post["date_modif"];
+                                                                                                                  }
+                                                                                                                  else
+                                                                                                                  {
+                                                                                                                      echo $post["date_creation"];
+                                                                                                                  }?>
                         </small>
                     </div>
                 <p>
