@@ -20,6 +20,7 @@
                                   FROM post
                                   ORDER BY date_creation");
 
+    // AFFICHAGE DE TOUS LES ARTICLES DU BLOG
     while ($post = $statement->fetch()) { ?>
         <a href="blog_post.php?id=<?php echo $post["id"]; ?>">
             <div class="row thumbnail">

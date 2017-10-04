@@ -50,7 +50,6 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">ADMIN <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                           <li><a href="addpost.php">AJOUTER UN POST</a></li>
-                          <li><a href="updatepost.php">MODIFIER UN POST</a></li>
                         </ul>
                     </li>
                     <li><a data-toggle="modal" data-target="#myModal" href="#myModal"><i class="fa fa-envelope-o"></i></a></li>
