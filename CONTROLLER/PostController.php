@@ -18,10 +18,10 @@ class PostController
     {
         $db = Database::connect();
         $post_manager = new PostManager($db);
-        $statement = $post_manager->view_list();
+        $list = $post_manager->view_list();
 
         // AFFICHAGE DE TOUS LES ARTICLES DU BLOG
-        while ($post = $statement->fetch()) { ?>
+        while ($post = $list) { ?>
             <a href="blog_post.php?id=<?= $post->getId(); ?>">
                 <div class="row thumbnail">
                     <br><br>
