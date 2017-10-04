@@ -17,50 +17,122 @@ class Post
     }
 
     // HYDRATE
-    public function hydrate()
+    public function hydrate($datas)
     {
-
+        $this->setTitle($datas["titre"]);
+        $this->setId($datas["id"]);
+        $this->setAuthor($datas["auteur"]);
+        $this->setContent($datas["contenu"]);
+        $this->setCreationDate($datas["date_creation"]);
+        $this->setUpdateDate($datas["date_modif"]);
     }
 
     // GETTERS
-    public function id()
+    public function getId()
     {
-        return $this->$id;
+        return $this->id;
     }
 
-    public function title()
+    /**
+     * @return mixed
+     */
+    public function getTitle()
     {
-        return $this->$title;
+        return $this->title;
     }
 
-    public function chapo()
+    /**
+     * @return mixed
+     */
+    public function getChapo()
     {
-        return $this->$chapo;
+        return substr($this->content, 0, 200)."...";
     }
 
-    public function content()
+    /**
+     * @return mixed
+     */
+    public function getContent()
     {
-        return $this->$content;
+        return $this->content;
     }
 
-    public function author()
+    /**
+     * @return mixed
+     */
+    public function getAuthor()
     {
-        return $this->$author;
+        return $this->author;
     }
 
-    public function creationDate()
+    /**
+     * @return mixed
+     */
+    public function getCreationDate()
     {
-        return $this->$creation_date;
+        return $this->creation_date;
     }
 
-    public function updateDate()
+    /**
+     * @return mixed
+     */
+    public function getUpdateDate()
     {
-        return $this->$update_date;
+        return $this->update_date;
     }
+
 
     // SETTERS
-    public function setAuthor()
+    public function setAuthor($author)
     {
+        $this->author = $author;
+    }
 
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @param mixed $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @param mixed $chapo
+     */
+    public function setChapo($chapo)
+    {
+        $this->chapo = $chapo;
+    }
+
+    /**
+     * @param mixed $content
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+    }
+
+    /**
+     * @param mixed $creation_date
+     */
+    public function setCreationDate($creation_date)
+    {
+        $this->creation_date = $creation_date;
+    }
+
+    /**
+     * @param mixed $update_date
+     */
+    public function setUpdateDate($update_date)
+    {
+        $this->update_date = $update_date;
     }
 }

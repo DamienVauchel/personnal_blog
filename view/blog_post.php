@@ -1,5 +1,6 @@
-<?php require "header.php"; ?>
 <?php
+require "header.php";
+require "../model/PostManager.php";
 require '../model/admin/db.php';
 
 if(!empty($_GET['id'])) {
@@ -7,13 +8,8 @@ if(!empty($_GET['id'])) {
 }
 
 $db = Database::connect();
-$statement = $db->prepare("   SELECT *
-                              FROM post
-                              WHERE id = ?");
-$statement->execute(array($id));
-$post = $statement->fetch();
-
-Database::disconnect();
+$post_manager = new PostManager($db);
+$post = $post_manager->getPost($id);
 
 function checkInput($data) {
     $data = trim($data);
@@ -39,9 +35,9 @@ if(isset($_POST["suppr"]))
         <div class="container">
             <div class="row centered">
                 <div class="col-lg-8 col-lg-offset-2">
-                    <h1 class="text-center"><b><?php echo $post["titre"]; ?></b></h1>
+                    <h1 class="text-center"><b><?php echo $post->getTitle(); ?></b></h1>
                     <div class="text-right">
-                        <div><b><?php   if($post["date_modif"] != null)
+                        <div><b><?php   if($post->getUpdateDate() != null)
                                         {
                                             echo "Mis à jour";
                                         }

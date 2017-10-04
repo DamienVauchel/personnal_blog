@@ -43,7 +43,7 @@
                         </small>
                     </div>
                 <p>
-                    <?php echo substr($post["contenu"], 0, 200)."..."; ?>
+                    <?= $post->getChapo() ?>
                 </p>
                 <p class="text-right"><a href="blog_post.php?id=<?php echo $post["id"]; ?>">... Lire l'article</a></p>
             </div>
