@@ -7,7 +7,7 @@
             <h1><b>Damien Vauchel</b></h1>
             <h2>Le développement, j'ai ça dans le sang!</h2>
             <br>
-            <a href="assets/docs/online-2017-CV-Damien-Vauchel.pdf" class="btn btn-default" target="_blank">Télécharger le CV</a>
+            <a href="../assets/docs/online-2017-CV-Damien-Vauchel.pdf" class="btn btn-default" target="_blank">Télécharger le CV</a>
             </div>
         </div><!-- row -->
     </div><!-- container -->

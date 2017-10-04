@@ -2,18 +2,21 @@
 require "Post.php";
 class PostManager
 {
+    // ATTRIBUTES
     private $database;
 
+    // CONSTRUCT
     public function __construct($database)
     {
         $this->database = $database;
     }
 
+    // METHODS
     public function getPost($id)
     {
         $statement = $this->database->prepare("   SELECT *
-                                      FROM post
-                                      WHERE id = ?");
+                                                  FROM post
+                                                  WHERE id = ?");
         $statement->execute(array($id));
         $datas = $statement->fetch();
 //        die(var_dump($datas));
@@ -21,5 +24,14 @@ class PostManager
 //        die(var_dump($post));
         return $post;
 //        Database::disconnect();
+    }
+
+    public function view_list()
+    {
+        $statement = $this->database->query("   SELECT *
+                                                FROM post
+                                                ORDER BY date_creation DESC");
+
+        return $statement;
     }
 }

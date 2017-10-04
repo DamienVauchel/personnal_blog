@@ -1,4 +1,4 @@
-<?php require "../CONTROLLER/contact.php";?>
+<?php require "../CONTROLLER/functions.php";?>
 
 <!DOCTYPE html>
 <html lang="fr">

@@ -1,6 +1,7 @@
-<?php require "header.php"; ?>
 <?php
+require "header.php";
 require "../MODEL/admin/db.php";
+require "../CONTROLLER/functions.php";
 
 if(!empty($_GET['id']))
 {
@@ -99,14 +100,6 @@ else
     $photo = $post['photo'];
 
     Database::disconnect();
-}
-
-function checkInput($data)
-{
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
 }
 ?>
 <?php

@@ -1,22 +1,9 @@
 <?php
 require "header.php";
-require "../MODEL/PostManager.php";
-require '../MODEL/admin/db.php';
+require "../CONTROLLER/PostController.php";
 
-if(!empty($_GET['id'])) {
-    $id = checkinput($_GET['id']);
-}
-
-$db = Database::connect();
-$post_manager = new PostManager($db);
-$post = $post_manager->getPost($id);
-
-function checkInput($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
+$post_controller = new PostController();
+$post = $post_controller->getPost();
 
 if(isset($_POST["suppr"]))
 {
@@ -35,7 +22,7 @@ if(isset($_POST["suppr"]))
         <div class="container">
             <div class="row centered">
                 <div class="col-lg-8 col-lg-offset-2">
-                    <h1 class="text-center"><b><?php echo $post->getTitle(); ?></b></h1>
+                    <h1 class="text-center"><b><?= $post->getTitle(); ?></b></h1>
                     <div class="text-right">
                         <div><b><?php   if($post->getUpdateDate() != null)
                                         {
@@ -44,14 +31,14 @@ if(isset($_POST["suppr"]))
                                         else
                                         {
                                             echo "Ecrit";
-                                        }?> par: <?php echo $post["auteur"]; ?></b>
-                            <div style="text-decoration: underline; font-weight: bold;"><i class="fa fa-clock-o" aria-hidden="true"></i> Date de la dernière mise à jour: <?php   if($post["date_modif"] != null)
+                                        }?> par: <?= $post->getAuthor(); ?></b>
+                            <div style="text-decoration: underline; font-weight: bold;"><i class="fa fa-clock-o" aria-hidden="true"></i> Date de la dernière mise à jour: <?php   if($post->getUpdateDate() != null)
                                                                                                                                         {
-                                                                                                                                            echo $post["date_modif"];
+                                                                                                                                            echo $post->getUpdateDate();
                                                                                                                                         }
                                                                                                                                         else
                                                                                                                                         {
-                                                                                                                                            echo $post["date_creation"];
+                                                                                                                                            echo $post->getCreationDate();
                                                                                                                                         }?>
                             </div>
                         </div>
@@ -65,15 +52,15 @@ if(isset($_POST["suppr"]))
     <div class="container desc">
         <div class="row thumbnail">
             <br>
-            <div class="text-left"><a href="updatepost.php?id=<?php echo $post["id"]; ?>" class="btn btn-primary">Modifier l'article</a></div>
+            <div class="text-left"><a href="updatepost.php?id=<?= $post->getId(); ?>" class="btn btn-primary">Modifier l'article</a></div>
             <br>
             <br>
             <div class="col-xs-12">
-                <img src="../assets/post_photo/<?php echo $post["photo"]; ?>" alt="" style="width: 100%;">
+                <img src="../assets/post_photo/<?= $post->getPhoto(); ?>" alt="" style="width: 100%;">
             </div>
             <br>
             <div class="col-xs-12">
-                <p><?php echo $post["contenu"]; ?></p>
+                <p><?= $post->getContent(); ?></p>
             </div>
             <br>
             <div class="text-right"><a class="btn btn-danger" data-toggle="modal" data-target="#suppressModal">Supprimer l'article</a></div>
@@ -91,7 +78,7 @@ if(isset($_POST["suppr"]))
                             <div>Etes-vous certain(e) de vouloir supprimer le post?</div>
                         </div>
                         <div class="modal-footer">
-                            <form action="blog_post.php?id=<?php echo $id; ?>" method="post">
+                            <form action="blog_post.php?id=<?= $post->getId(); ?>" method="post">
                                 <input type="submit" class="btn btn-danger" name="suppr" value="Oui">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
                             </form>

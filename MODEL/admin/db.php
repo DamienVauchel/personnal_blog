@@ -21,7 +21,8 @@ class Database
         return self::$connection;
     }
 
-    public static function disconnect() {
+    public static function disconnect()
+    {
         self::$connection = null;
     }
 }

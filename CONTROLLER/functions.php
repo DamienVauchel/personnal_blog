@@ -1,4 +1,5 @@
 <?php
+// CONTACT FORM WORKING
 if(isset($_POST['sendmsg']))
 {
     $to         = "damien.vauchel@gmail.com";
@@ -16,4 +17,13 @@ elseif(isset($_POST['sendmsgModal']))
     $header     = $_POST['prenomModal']." ".$_POST['nomModal']." <".$_POST['emailModal'].">";
 
     mail($to, $subject, $body, 'From: '.$header);
+}
+
+// CHECK INPUT
+function checkInput($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
 }
