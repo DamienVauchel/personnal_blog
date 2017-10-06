@@ -26,19 +26,13 @@ class PostManager
 //        Database::disconnect();
     }
 
-    public function view_list()
+    public function getAll()
     {
         $statement = $this->database->query("   SELECT *
                                                 FROM post
                                                 ORDER BY date_creation DESC");
-        return $statement;
-    }
-
-    public function getIdForList()
-    {
-        $statement = $this->database->query("   SELECT id
-                                                FROM post");
-        $id = $statement->fetch();
-        return $id;
+        $id = $this->database->query("  SELECT id
+                                        FROM post");
+        return $posts = $statement->fetch();
     }
 }

@@ -31,8 +31,8 @@ class PostController
         {
             $db = Database::connect();
             $statement = $db->prepare(" DELETE
-                                FROM post
-                                WHERE id = ?");
+                                        FROM post
+                                        WHERE id = ?");
             $statement->execute(array($id));
 
             Database::disconnect();
@@ -44,14 +44,11 @@ class PostController
     {
         $db = Database::connect();
         $post_manager = new PostManager($db);
-        $statement = $post_manager->view_list();
+        $posts = $post_manager->getAll();
 
         // AFFICHAGE DE TOUS LES ARTICLES DU BLOG
-        while ($post = $statement->fetch())
+        while ($post = $posts)
         {
-            $post_controller = new PostController();
-            $id = $post_manager->getIdForList();
-            $post = $post_controller->getPost($id);
             ?>
             <a href="blog_post.php?id=<?= $post->getId(); ?>">
                 <div class="row thumbnail">
