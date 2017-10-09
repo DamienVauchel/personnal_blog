@@ -12,6 +12,14 @@ class PostManager
     }
 
     // METHODS
+    public function createPost($titre, $contenu, $auteur, $photo)
+    {
+        $statement = $this->database->prepare("   INSERT INTO post (title, content, author, photo, creation_date) 
+                                                  VALUES (?, ?, ?, ?, NOW())");
+        $statement->execute(array($titre, $contenu, $auteur, $photo));
+        return $statement;
+    }
+
     public function getPost($id)
     {
         $statement = $this->database->prepare("   SELECT *
@@ -49,7 +57,7 @@ class PostManager
         $posts = array();
         $statement = $this->database->query(" SELECT *
                                               FROM post
-                                              ORDER BY date_creation DESC");
+                                              ORDER BY creation_date DESC");
 
         while ($datas = $statement->fetch())
         {

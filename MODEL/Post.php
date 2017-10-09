@@ -20,12 +20,12 @@ class Post
     // HYDRATE
     public function hydrate($datas)
     {
-        $this->setTitle($datas["titre"]);
+        $this->setTitle($datas["title"]);
         $this->setId($datas["id"]);
-        $this->setAuthor($datas["auteur"]);
-        $this->setContent($datas["contenu"]);
-        $this->setCreationDate($datas["date_creation"]);
-        $this->setUpdateDate($datas["date_modif"]);
+        $this->setAuthor($datas["author"]);
+        $this->setContent($datas["content"]);
+        $this->setCreationDate($datas["creation_date"]);
+        $this->setUpdateDate($datas["update_date"]);
         $this->setPhoto($datas["photo"]);
     }
 

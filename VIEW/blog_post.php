@@ -13,22 +13,27 @@ $post_controller->supprPost();
                 <div class="col-lg-8 col-lg-offset-2">
                     <h1 class="text-center"><b><?= $post->getTitle(); ?></b></h1>
                     <div class="text-right">
-                        <div><b><?php   if($post->getUpdateDate() != null)
-                                        {
-                                            echo "Mis à jour";
-                                        }
-                                        else
-                                        {
-                                            echo "Ecrit";
-                                        }?> par: <?= $post->getAuthor(); ?></b>
-                            <div style="text-decoration: underline; font-weight: bold;"><i class="fa fa-clock-o" aria-hidden="true"></i> Date de la dernière mise à jour: <?php   if($post->getUpdateDate() != null)
-                                                                                                                                        {
-                                                                                                                                            echo $post->getUpdateDate();
-                                                                                                                                        }
-                                                                                                                                        else
-                                                                                                                                        {
-                                                                                                                                            echo $post->getCreationDate();
-                                                                                                                                        }?>
+                        <div><b>
+                                <?php
+                                if($post->getUpdateDate() != null)
+                                {
+                                    echo "Mis à jour";
+                                }
+                                else
+                                {
+                                    echo "Ecrit";
+                                }
+                                ?> par: <?= $post->getAuthor(); ?></b>
+                            <div style="text-decoration: underline; font-weight: bold;"><i class="fa fa-clock-o" aria-hidden="true"></i> Date de la dernière mise à jour: <?php
+                                                                                                                                if($post->getUpdateDate() != null)
+                                                                                                                                {
+                                                                                                                                    echo $post->getUpdateDate();
+                                                                                                                                }
+                                                                                                                                else
+                                                                                                                                {
+                                                                                                                                    echo $post->getCreationDate();
+                                                                                                                                }
+                                                                                                                                ?>
                             </div>
                         </div>
                     </div>

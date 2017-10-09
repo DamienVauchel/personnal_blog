@@ -11,9 +11,9 @@ if(!empty($_GET['id']))
 $titreErreur = $contenuErreur = $auteurErreur = $photoErreur = $titre = $contenu = $auteur = $photo = "";
 
 if(!empty($_POST)) {
-    $titre              =       checkInput($_POST['titre']);
-    $contenu            =       checkInput($_POST['contenu']);
-    $auteur             =       checkInput($_POST['auteur']);
+    $titre              =       checkInput($_POST['title']);
+    $contenu            =       checkInput($_POST['content']);
+    $auteur             =       checkInput($_POST['author']);
     $photo              =       checkInput($_FILES['photo']['name']);
     $photoPath          =       "../assets/post_photo/" . basename($photo); // Chemin de l'image
     $photoExtension     =       pathinfo($photoPath, PATHINFO_EXTENSION);
@@ -72,14 +72,14 @@ if(!empty($_POST)) {
         if($isPhotoUpdated)
         {
             $statement = $db->prepare("  UPDATE post 
-                                         SET titre = ?, contenu = ?, auteur = ?, photo = ?, date_creation = NOW() 
+                                         SET title = ?, content = ?, author = ?, photo = ?, date_creation = NOW() 
                                          WHERE id = ?");
             $statement->execute(array($titre, $contenu, $auteur, $photo, $id));
         }
         else
         {
             $statement = $db->prepare("  UPDATE post 
-                                         SET titre = ?, contenu = ?, auteur = ?, date_creation = NOW() 
+                                         SET title = ?, content = ?, author = ?, date_creation = NOW() 
                                          WHERE id = ?");
             $statement->execute(array($titre, $contenu, $auteur, $id));
         }
@@ -94,9 +94,9 @@ else
     $statement = $db->prepare("SELECT * FROM post WHERE id = ?;");
     $statement->execute(array($id));
     $post = $statement->fetch();
-    $titre = $post['titre'];
-    $contenu = $post['contenu'];
-    $auteur = $post['auteur'];
+    $titre = $post['title'];
+    $contenu = $post['content'];
+    $auteur = $post['author'];
     $photo = $post['photo'];
 
     Database::disconnect();
@@ -105,39 +105,39 @@ else
 <?php
 //require '../MODEL/admin/db.php';
 //
-//$titreErreur = $contenuErreur = $auteurErreur = $photoErreur = $titre = $contenu = $auteur = $photo = "";
+//$titleError = $contentError = $authorError = $photoError = $title = $content = $author = $photo = "";
 //
 //if(!empty($_POST))
 //{
-//    $titre          = checkInput($_POST['titre']);
-//    $contenu        = checkInput($_POST['contenu']);
-//    $auteur         = checkInput($_POST['auteur']);
+//    $title          = checkInput($_POST['title']);
+//    $content        = checkInput($_POST['content']);
+//    $author         = checkInput($_POST['author']);
 //    $photo          = checkInput($_FILES['photo']['name']);
 //    $photoPath      = "../assets/post_photo/" . basename($photo); // Chemin de l'image
 //    $photoExtension = pathinfo($photoPath, PATHINFO_EXTENSION);
 //    $isSuccess      = true;
 //
-//    if (empty($titre))
+//    if (empty($title))
 //    {
-//        $titreErreur = "Ce champ ne peut pas être vide";
+//        $titleError = "Ce champ ne peut pas être vide";
 //        $isSuccess = false;
 //    }
 //
-//    if (empty($contenu))
+//    if (empty($content))
 //    {
-//        $contenuErreur = "Ce champ ne peut pas être vide";
+//        $contentError = "Ce champ ne peut pas être vide";
 //        $isSuccess = false;
 //    }
 //
-//    if (empty($auteur))
+//    if (empty($author))
 //    {
-//        $auteurErreur = "Ce champ ne peut pas être vide";
+//        $authorError = "Ce champ ne peut pas être vide";
 //        $isSuccess = false;
 //    }
 //
 //    if (empty($photo))
 //    {
-//        $photoErreur = "Ce champ ne peut pas être vide";
+//        $photoError = "Ce champ ne peut pas être vide";
 //        $isSuccess = false;
 //    }
 //    else
@@ -146,13 +146,13 @@ else
 //
 //        if ($photoExtension != "jpg" && $photoExtension != "png" && $photoExtension != "jpeg")
 //        {
-//            $photoErreur = "Les fichiers autorisés sont: .jpg, .jpeg, .png";
+//            $photoError = "Les fichiers autorisés sont: .jpg, .jpeg, .png";
 //            $isUploadSuccess = false;
 //        }
 //
 //        if (file_exists($photoPath))
 //        {
-//            $photoErreur = "Le fichier existe déjà";
+//            $photoError = "Le fichier existe déjà";
 //            $isUploadSuccess = false;
 //        }
 //
@@ -166,7 +166,7 @@ else
 //        {
 //            if (!move_uploaded_file($_FILES['photo']['tmp_name'], $photoPath))
 //            {
-//                $photoErreur = "Il y a eu une erreur lors de l'upload";
+//                $photoError = "Il y a eu une erreur lors de l'upload";
 //                $isUploadSuccess = false;
 //            }
 //        }
@@ -176,13 +176,13 @@ else
 //        $db = Database::connect();
 //        if ($isPhotoUpdated)
 //        {
-//            $statement = $db->prepare("UPDATE post SET titre = ?, contenu = ?, auteur = ?, photo = ?, date_modif = NOW() WHERE id = ?");
-//            $statement->execute(array($titre, $contenu, $auteur, $photo, $id));
+//            $statement = $db->prepare("UPDATE post SET title = ?, content = ?, author = ?, photo = ?, date_modif = NOW() WHERE id = ?");
+//            $statement->execute(array($title, $content, $author, $photo, $id));
 //        }
 //        else
 //        {
-//            $statement = $db->prepare("UPDATE post SET titre = ?, contenu = ?, auteur = ?, date_modif = NOW() WHERE id = ?");
-//            $statement->execute(array($titre, $contenu, $auteur, $id));
+//            $statement = $db->prepare("UPDATE post SET title = ?, content = ?, author = ?, date_modif = NOW() WHERE id = ?");
+//            $statement->execute(array($title, $content, $author, $id));
 //        }
 //
 //        Database::disconnect();
@@ -205,9 +205,9 @@ else
 //    $statement = $db->prepare("SELECT * FROM post WHERE id = ?;");
 //    $statement->execute(array($id));
 //    $post = $statement->fetch();
-//    $titre = $post['titre'];
-//    $contenu = $post['contenu'];
-//    $auteur = $post['auteur'];
+//    $title = $post['title'];
+//    $content = $post['content'];
+//    $author = $post['author'];
 //    $photo = $post['photo'];
 //
 //    Database::disconnect();

@@ -3,7 +3,6 @@
     <div class="container">
         <div class="row centered">
             <a href="http://www.damienvauchel.com" target="_blank"><i class="fa fa-user" aria-hidden="true"></i></a><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a><a href="#" target="_blank"><i class="fa fa-twitter"></i></a><a href="#" target="_blank"><i class="fa fa-facebook"></i></a><a href="#" target="_blank"><i class="fa fa-github"></i></a>
-
         </div><!-- row -->
     </div><!-- container -->
 </div><!-- Footer -->

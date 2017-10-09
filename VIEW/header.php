@@ -42,8 +42,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                <?php   $path = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-                            $current = basename ($path); ?>
+                <?php
+                $path = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+                $current = basename ($path);
+                ?>
                     <li <?php if ($current == 'index.php'){ echo "class = 'active'";}?>><a href="index.php">ACCUEIL</a></li>
                     <li <?php if ($current == 'blog.php'){ echo "class = 'active'";}?>><a href="blog.php">BLOG</a></li>
                     <li class="dropdown <?php if ($current == 'addpost.php' || $current == 'updatepost.php'){echo "active";}?>">

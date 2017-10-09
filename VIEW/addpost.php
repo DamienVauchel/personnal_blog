@@ -1,79 +1,11 @@
-<?php require "header.php"; ?>
 <?php
-require "../MODEL/admin/db.php";
+require "header.php";
+include "../CONTROLLER/PostController.php";
 
-$titreErreur = $contenuErreur = $auteurErreur = $photoErreur = $titre = $contenu = $auteur = $photo = "";
-
-if(!empty($_POST)) {
-    $titre              =       checkInput($_POST['titre']);
-    $contenu            =       checkInput($_POST['contenu']);
-    $auteur             =       checkInput($_POST['auteur']);
-    $photo              =       checkInput($_FILES['photo']['name']);
-    $photoPath          =       "../assets/post_photo/" . basename($photo); // Chemin de l'image
-    $photoExtension     =       pathinfo($photoPath, PATHINFO_EXTENSION);
-    $isSuccess          =       true;
-    $isUploadSuccess    =       false;
-
-    if(empty($titre)) {
-        $titreErreur = "Ce champ ne peut pas être vide";
-        $isSuccess = false;
-    }
-
-    if(empty($contenu)) {
-        $contenuErreur = "Ce champ ne peut pas être vide";
-        $isSuccess = false;
-    }
-
-    if(empty($auteur)) {
-        $auteurErreur = "Ce champ ne peut pas être vide";
-        $isSuccess = false;
-    }
-
-    if(empty($photo)) {
-        $photoErreur = "Ce champ ne peut pas être vide";
-        $isSuccess = false;
-    } else {
-        $isUploadSuccess = true;
-
-        if($photoExtension != "jpg" && $photoExtension != "png" && $photoExtension != "jpeg") {
-            $photoErreur = "Les fichiers autorisés sont: .jpg, .jpeg, .png";
-            $isUploadSuccess = false;
-        }
-
-        if(file_exists($photoPath)) {
-            $photoErreur = "Le fichier existe déjà";
-            $isUploadSuccess = false;
-        }
-
-        if($_FILES['photo']['size'] > 5000000) {
-            $imageError = "Le fichier ne peut pas dépasser les 5 MB";
-            $isUploadSuccess = false;
-        }
-
-        if($isUploadSuccess) {
-            if(!move_uploaded_file($_FILES['photo']['tmp_name'], $photoPath)) {
-                $photoErreur = "Il y a eu une erreur lors de l'upload";
-                $isUploadSuccess = false;
-            }
-        }
-    }
-
-    if($isSuccess && $isUploadSuccess) {
-        $db = Database::connect();
-        $statement = $db->prepare("  INSERT INTO post (titre, contenu, auteur, photo, date_creation) 
-                                     VALUES (?, ?, ?, ?, NOW())");
-        $statement->execute(array($titre, $contenu, $auteur, $photo));
-        Database::disconnect();
-        header("Location: blog.php");
-    }
-}
-
-function checkInput($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
+$titleError = $contentError = $authorError = $photoError = $title = $content = $author = $photo = "";
+$datas = $_POST;
+$post_controller = new PostController();
+$post_controller->addPost($datas);
 ?>
 
 
@@ -92,18 +24,18 @@ function checkInput($data) {
         <div class="container" id="addpost">
             <form class="form" method="post" action="addpost.php" enctype="multipart/form-data">
                 <div class="form-group row">
-                    <label for="titre" class="col-sm-2 col-form-label">Titre du post</label>
+                    <label for="title" class="col-sm-2 col-form-label">Titre du post</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="titre" id="titre" placeholder="Tapez le titre du post">
-                        <span class="help-inline"><?php echo $titreErreur ?></span>
+                        <input type="text" class="form-control" name="title" id="title" placeholder="Tapez le titre du post">
+                        <span class="help-inline"><?php echo $titleError ?></span>
                     </div>
                 </div>
                 <br>
                 <div class="form-group row">
-                    <label for="auteur" class="col-sm-2 col-form-label">Auteur</label>
+                    <label for="author" class="col-sm-2 col-form-label">Auteur</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="auteur" id="auteur" placeholder="Tapez le nom de l'Auteur">
-                        <span class="help-inline"><?php echo $auteurErreur ?></span>
+                        <input type="text" class="form-control" name="author" id="author" placeholder="Tapez le nom de l'Auteur">
+                        <span class="help-inline"><?php echo $authorError ?></span>
                     </div>
                 </div>
                 <br>
@@ -111,16 +43,16 @@ function checkInput($data) {
                     <label for="photo" class="col-sm-2 col-form-label">Photo du post (.jpg ou .png)</label>
                     <div class="col-sm-10">
                         <input type="file" class="form-control-file" name="photo" id="photo">
-                        <span class="help-inline"><?php echo $photoErreur ?></span>
+                        <span class="help-inline"><?php echo $photoError ?></span>
                     </div>
                 </div>
                 <br>
                 <div class="form-group row">
-                    <label for="contenu" class="col-sm-2 col-form-label">Contenu du post</label>
+                    <label for="content" class="col-sm-2 col-form-label">Contenu du post</label>
                     <div class="col-sm-10">
-                        <textarea name="contenu" class="form-control animated" placeholder="Tapez votre contenu ici" rows="10"></textarea>
+                        <textarea name="content" class="form-control animated" placeholder="Tapez votre contenu ici" rows="10"></textarea>
                         <small><em>Le cadre peut être redimensionné</em></small>
-                        <span class="help-inline"><?php echo $contenuErreur ?></span>
+                        <span class="help-inline"><?php echo $contentError ?></span>
                     </div>
                 </div>
                 <div class="form-group row">
