@@ -48,13 +48,12 @@ class PostController
 //        die(var_dump($posts));
 
         // AFFICHAGE DE TOUS LES ARTICLES DU BLOG
-        while ($post = $posts->fetch())
+        foreach($posts as $post)
         {
-            die(var_dump($post));
+//            die(var_dump($post));
             ?>
             <a href="blog_post.php?id=<?= $post->getId(); ?>">
                 <div class="row thumbnail">
-                    <br><br>
                     <div class="col-md-6">
                         <img src="../assets/post_photo/<?= $post->getPhoto(); ?>" alt="" style="max-width: 100%;">
                     </div>
@@ -77,7 +76,6 @@ class PostController
                         </p>
                         <p class="text-right">... Lire l'article</p>
                     </div>
-                    <br><br>
                 </div><!-- row -->
             </a>
 
