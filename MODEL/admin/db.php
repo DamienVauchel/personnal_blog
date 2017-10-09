@@ -8,6 +8,9 @@ class Database
 
     private static $connection = null;
 
+    /**
+     * @return null|PDO
+     */
     public static function connect()
     {
         try

@@ -18,7 +18,10 @@ $post_controller = new PostController();
 
 
 <div class="container desc">
-    <?php $post_controller->getList(); ?>
+    <?php
+    $post_controller->getList();
+
+    ?>
 </div>
 
 <?php require "footer.php"; ?>
