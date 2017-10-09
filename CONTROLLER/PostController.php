@@ -45,13 +45,11 @@ class PostController
         $db = Database::connect();
         $post_manager = new PostManager($db);
         $posts = $post_manager->getAll($db);
-        die(var_dump($posts));
+//        die(var_dump($posts));
 
         // AFFICHAGE DE TOUS LES ARTICLES DU BLOG
-        while ($post = $posts)
+        while ($post = $posts->fetch())
         {
-            $id = $post->getId();
-            $post = $post_manager->getPost($id);
             die(var_dump($post));
             ?>
             <a href="blog_post.php?id=<?= $post->getId(); ?>">

@@ -28,18 +28,17 @@ class PostManager
 
     public function getAll()
     {
-        $statement = $this->database->prepare(" SELECT *
-                                                FROM post
-                                                ORDER BY date_creation DESC");
-        $statement->execute();
-        $datas = $statement->fetch();
-        //die(var_dump($datas));
-        $posts = [];
-        while($data = $datas)
-        {
-            $post = new Post($data);
-            $posts[] = $post;
-        }
-        return $posts;
+        $statement = $this->database->query(" SELECT *
+                                              FROM post
+                                              ORDER BY date_creation DESC");
+//
+//        die(var_dump($statement));
+//        $posts = [];
+//        while($data = $datas)
+//        {
+//            $post = new Post($data);
+//            $posts[] = $post;
+//        }
+        return $statement;
     }
 }
