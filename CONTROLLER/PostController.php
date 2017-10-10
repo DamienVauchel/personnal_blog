@@ -15,67 +15,63 @@ class PostController
             $isSuccess          =       true;
             $isUploadSuccess    =       false;
 
-            if(empty($title)) {
+            if(empty($title))
+            {
                 $titleError = "Ce champ ne peut pas être vide";
                 $isSuccess = false;
-                return $titleError;
-                return $isSuccess;
             }
 
-            if(empty($content)) {
+            if(empty($content))
+            {
                 $contentError = "Ce champ ne peut pas être vide";
                 $isSuccess = false;
-                return $contentError;
-                return $isSuccess;
             }
 
-            if(empty($author)) {
+            if(empty($author))
+            {
                 $authorError = "Ce champ ne peut pas être vide";
                 $isSuccess = false;
-                return $authorError;
-                return $isSuccess;
             }
 
-            if(empty($photo)) {
+            if(empty($photo))
+            {
                 $photoError = "Ce champ ne peut pas être vide";
                 $isSuccess = false;
-                return $photoError;
-                return $isSuccess;
-            } else {
+            }
+            else
+            {
                 $isUploadSuccess = true;
 
-                if($photoExtension != "jpg" && $photoExtension != "png" && $photoExtension != "jpeg") {
+                if($photoExtension != "jpg" && $photoExtension != "png" && $photoExtension != "jpeg")
+                {
                     $photoError = "Les fichiers autorisés sont: .jpg, .jpeg, .png";
                     $isUploadSuccess = false;
-                    return $photoError;
-                    return $isUploadSuccess;
                 }
 
-                if(file_exists($photoPath)) {
+                if(file_exists($photoPath))
+                {
                     $photoError = "Le fichier existe déjà";
                     $isUploadSuccess = false;
-                    return $photoError;
-                    return $isUploadSuccess;
                 }
 
-                if($_FILES['photo']['size'] > 5000000) {
+                if($_FILES['photo']['size'] > 5000000)
+                {
                     $photoError = "Le fichier ne peut pas dépasser les 5 MB";
                     $isUploadSuccess = false;
-                    return $photoError;
-                    return $isUploadSuccess;
                 }
 
-                if($isUploadSuccess) {
-                    if(!move_uploaded_file($_FILES['photo']['tmp_name'], $photoPath)) {
+                if($isUploadSuccess)
+                {
+                    if(!move_uploaded_file($_FILES['photo']['tmp_name'], $photoPath))
+                    {
                         $photoError = "Il y a eu une erreur lors de l'upload";
                         $isUploadSuccess = false;
-                        return $photoError;
-                        return $isUploadSuccess;
                     }
                 }
             }
 
-            if($isSuccess && $isUploadSuccess) {
+            if($isSuccess && $isUploadSuccess)
+            {
                 $db = Database::connect();
                 $post_manager = new PostManager($db);
                 $post_manager->createPost($title, $content, $author, $photo);

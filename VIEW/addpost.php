@@ -27,7 +27,7 @@ $post_controller->addPost($datas);
                     <label for="title" class="col-sm-2 col-form-label">Titre du post</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="title" id="title" placeholder="Tapez le titre du post">
-                        <span class="help-inline"><?php echo $titleError ?></span>
+                        <span class="help-inline"><?= $titleError ?></span>
                     </div>
                 </div>
                 <br>
@@ -35,7 +35,7 @@ $post_controller->addPost($datas);
                     <label for="author" class="col-sm-2 col-form-label">Auteur</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="author" id="author" placeholder="Tapez le nom de l'Auteur">
-                        <span class="help-inline"><?php echo $authorError ?></span>
+                        <span class="help-inline"><?= $authorError ?></span>
                     </div>
                 </div>
                 <br>
@@ -43,7 +43,7 @@ $post_controller->addPost($datas);
                     <label for="photo" class="col-sm-2 col-form-label">Photo du post (.jpg ou .png)</label>
                     <div class="col-sm-10">
                         <input type="file" class="form-control-file" name="photo" id="photo">
-                        <span class="help-inline"><?php echo $photoError ?></span>
+                        <span class="help-inline"><?= $photoError ?></span>
                     </div>
                 </div>
                 <br>
@@ -52,7 +52,7 @@ $post_controller->addPost($datas);
                     <div class="col-sm-10">
                         <textarea name="content" class="form-control animated" placeholder="Tapez votre contenu ici" rows="10"></textarea>
                         <small><em>Le cadre peut être redimensionné</em></small>
-                        <span class="help-inline"><?php echo $contentError ?></span>
+                        <span class="help-inline"><?= $contentError ?></span>
                     </div>
                 </div>
                 <div class="form-group row">
