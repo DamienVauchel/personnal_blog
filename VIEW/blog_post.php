@@ -1,11 +1,4 @@
-<?php
-require "header.php";
-require "../CONTROLLER/PostController.php";
-
-$post_controller = new PostController();
-$post = $post_controller->getPost();
-$post_controller->supprPost();
-?>
+<?php require "../include/header.php"; ?>
 
     <div id="blue">
         <div class="container">
@@ -85,4 +78,4 @@ $post_controller->supprPost();
         </div><!-- row -->
     </div>
 
-<?php require "footer.php"; ?>
+<?php require "../include/footer.php"; ?>

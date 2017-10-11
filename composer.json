@@ -8,5 +8,10 @@
       "name": "author's name",
       "email": "email@example.com"
     }
-  ]
+  ],
+  "autoload": {
+    "psr-4": {
+      "APP\\": "Class"
+    }
+  }
 }

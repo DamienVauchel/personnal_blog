@@ -1,7 +1,7 @@
 <?php
 require "header.php";
-require "../MODEL/admin/db.php";
-require "../CONTROLLER/functions.php";
+require "../MODEL/admin/Database.php";
+require "../include/functions.php";
 
 if(!empty($_GET['id']))
 {
@@ -103,7 +103,7 @@ else
 }
 ?>
 <?php
-//require '../MODEL/admin/db.php';
+//require '../MODEL/admin/Database.php';
 //
 //$titleError = $contentError = $authorError = $photoError = $title = $content = $author = $photo = "";
 //

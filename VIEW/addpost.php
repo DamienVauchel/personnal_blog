@@ -1,6 +1,6 @@
 <?php
 require "header.php";
-include "../CONTROLLER/PostController.php";
+include "../include/PostController.php";
 
 $titleError = $contentError = $authorError = $photoError = $title = $content = $author = $photo = "";
 $datas = $_POST;
