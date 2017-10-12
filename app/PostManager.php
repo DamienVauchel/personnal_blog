@@ -49,4 +49,17 @@ class PostManager
 //        die(var_dump($posts));
         return $posts;
     }
+
+    public function getAllCategory()
+    {
+        $categories = [];
+        $statement = $this->database->query("   SELECT *
+                                                FROM category");
+        while($datas = $statement->fetch())
+        {
+            $categories[] = new Category($datas);
+        }
+
+        return $categories;
+    }
 }

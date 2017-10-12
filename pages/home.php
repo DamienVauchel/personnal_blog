@@ -79,7 +79,7 @@
     <h4 class="text-center">Pour les questions d'ordre général, vous pouvez utiliser le formulaire ci-joint.</h4>
     <h4 class="text-center">Je vous répondrez dès que possible.</h4>
     <br>
-    <form class="form" action="home.php" method="post" autocomplete="off">
+    <form class="form" action="index.php?home" method="post" autocomplete="off">
         <div class="form-group row">
             <label for="nom" class="col-sm-2 col-form-label">Nom</label>
             <div class="col-sm-10">

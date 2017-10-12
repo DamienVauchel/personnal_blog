@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <div class="row centered">
                     <!--                   CONTACT                                                                   -->
-                    <form class="form" action="../pages/home.php" method="post" autocomplete="off">
+                    <form class="form" action="../index.php" method="post" autocomplete="off">
                         <div class="form-group row">
                             <label for="nom" class="col-sm-2 col-form-label">Nom</label>
                             <div class="col-sm-10">

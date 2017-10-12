@@ -139,6 +139,14 @@ class PostController
         include "pages/blog.php";
     }
 
+    public function getCategoryList()
+    {
+        $db = Database::connect();
+        $post_manager = new PostManager($db);
+        $categories = $post_manager->getAllCategory($db);
+        include "pages/category.php";
+    }
+
     public function getAddPost()
     {
         include "pages/addpost.php";
