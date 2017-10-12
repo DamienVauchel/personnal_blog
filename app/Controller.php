@@ -1,6 +1,6 @@
 <?php
 namespace App;
-class PostController
+class Controller
 {
     protected $db;
     protected $post_manager;
@@ -8,7 +8,7 @@ class PostController
     public function __construct()
     {
         $this->db = Database::connect();
-        $this->post_manager = new PostManager($this->db);
+        $this->post_manager = new Manager($this->db);
     }
 
     public function home()
@@ -124,17 +124,17 @@ class PostController
 
         if(isset($_POST["suppr"]))
         {
-            $this->post_manager->delete();
+            $this->post_manager->delete($_GET['id']);
 
             Database::disconnect();
-            header("Location: pages/blog.php");
+            header("Location: index.php?blog");
         }
     }
 
     public function getList()
     {
         $db = Database::connect();
-        $post_manager = new PostManager($db);
+        $post_manager = new Manager($db);
         $posts = $post_manager->getAll($db);
         include "pages/blog.php";
     }
@@ -142,9 +142,15 @@ class PostController
     public function getCategoryList()
     {
         $db = Database::connect();
-        $post_manager = new PostManager($db);
-        $categories = $post_manager->getAllCategory($db);
-        include "pages/category.php";
+        $post_manager = new Manager($db);
+        return $post_manager->getAllCategories($db);
+    }
+
+    public function findCategory($id)
+    {
+        $db = Database::connect();
+        $manager = new Manager($db);
+        return $manager->findCategory($id);
     }
 
     public function getAddPost()

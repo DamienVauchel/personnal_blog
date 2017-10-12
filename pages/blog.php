@@ -1,7 +1,8 @@
 <?php
-use App\PostController;
+use App\Controller;
 
-$post_controller = new PostController();
+$post_controller = new Controller();
+//$categories = $post_controller->getCategoryList();
 ?>
 
 <div id="blue">
@@ -17,8 +18,11 @@ $post_controller = new PostController();
 
 
 <div class="container desc">
-    <div class="col-md-9">
-        <?php foreach($posts as $post): ?>
+    <div class="col-md-12">
+        <?php foreach($posts as $post):
+//            $category_id = $post->getCategoryId();
+//            $post_category = $post_controller->findCategory($category_id);
+            ?>
             <a href="index.php?blog_post&id=<?= $post->getId(); ?>">
                 <div class="row thumbnail">
                     <div class="col-md-6">
@@ -27,6 +31,7 @@ $post_controller = new PostController();
                     <div class="col-md-6">
                         <h2 class="text-center"><b><?= strtoupper($post->getTitle()); ?></b></h2>
                         <div class="text-right">
+<!--                            <p>Catégorie: --><?//= $post_category->getName(); ?><!--</p>-->
                             <small style="text-decoration: underline;">
                                 <i class="fa fa-clock-o" aria-hidden="true"></i> Date de dernière mise à jour: <?php if($post->getUpdateDate() != null)
                                 {
@@ -48,15 +53,15 @@ $post_controller = new PostController();
             <hr>
         <?php endforeach; ?>
     </div>
-    <div class="categories col-md-3 thumbnail">
-        <h1 class="text-center"><b>Catégories</b></h1>
-        <ul>
-            <?php foreach ( as $category): ?>
-                <li>
-                    <a href=""></a>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-    </div>  <!-- CATEGORIES END -->
+<!--    <div class="categories col-md-3 thumbnail">-->
+<!--        <h1 class="text-center"><b>Catégories</b></h1>-->
+<!--        <ul>-->
+<!--            --><?php //foreach ($categories as $category): ?>
+<!--                <li>-->
+<!--                    <a href="index.php?category&id=--><?//= $category->getId(); ?><!--">--><?//= $category->getName(); ?><!--</a>-->
+<!--                </li>-->
+<!--            --><?php //endforeach; ?>
+<!--        </ul>-->
+<!--    </div>  <!-- CATEGORIES END -->-->
 <!--Database::disconnect();-->
 </div>

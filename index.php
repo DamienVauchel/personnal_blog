@@ -1,13 +1,13 @@
 <?php
 use App\Autoloader;
-use App\PostController;
+use App\Controller;
 use App\Functions;
 
 define("APP_ROOT", __DIR__);
 require "app/Autoloader.php";
 Autoloader::register();
 //echo APP_ROOT;
-$post_controller = new PostController();
+$post_controller = new Controller();
 
 ob_start();
 if (empty($_SERVER["QUERY_STRING"]) || isset($_GET['home']))

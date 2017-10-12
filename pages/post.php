@@ -41,7 +41,7 @@
             <br>
             <br>
             <div class="col-xs-12">
-                <img src="../assets/post_photo/<?= $post->getPhoto(); ?>" alt="" style="width: 100%;">
+                <img src="assets/post_photo/<?= $post->getPhoto(); ?>" alt="" style="width: 100%;">
             </div>
             <br>
             <div class="col-xs-12">
@@ -63,7 +63,7 @@
                             <div>Etes-vous certain(e) de vouloir supprimer le post?</div>
                         </div>
                         <div class="modal-footer">
-                            <form action="post.php?id=<?= $post->getId(); ?>" method="post">
+                            <form action="index.php?post&id=<?= $post->getId(); ?>" method="post">
                                 <input type="submit" class="btn btn-danger" name="suppr" value="Oui">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
                             </form>

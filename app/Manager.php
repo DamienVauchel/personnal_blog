@@ -1,6 +1,6 @@
 <?php
 namespace App;
-class PostManager
+class Manager
 {
     // ATTRIBUTES
     private $database;
@@ -50,7 +50,7 @@ class PostManager
         return $posts;
     }
 
-    public function getAllCategory()
+    public function getAllCategories()
     {
         $categories = [];
         $statement = $this->database->query("   SELECT *
@@ -61,5 +61,24 @@ class PostManager
         }
 
         return $categories;
+    }
+
+    public function findCategory($id)
+    {
+        $statement = $this->database->prepare("   SELECT *
+                                                  FROM category
+                                                  WHERE id = ?");
+        $statement->execute(array($id));
+        $datas = $statement->fetch();
+        $category = new Category($datas);
+
+        return $category;
+    }
+
+    public function delete($id)
+    {
+        $statement = $this->database->query("   DELETE FROM post
+                                                WHERE id = $id");
+        return $statement;
     }
 }

@@ -1,9 +1,9 @@
 <?php
-use App\PostController;
+use App\Controller;
 
 $titleError = $contentError = $authorError = $photoError = $title = $content = $author = $photo = "";
 $datas = $_POST;
-$post_controller = new PostController();
+$post_controller = new Controller();
 $post_controller->addPost($datas);
 ?>
 

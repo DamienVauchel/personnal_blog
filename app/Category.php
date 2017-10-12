@@ -40,5 +40,10 @@ class Category
     {
         $this->id = $id;
     }
+
     // METHODS
+    public function find($id)
+    {
+
+    }
 }
