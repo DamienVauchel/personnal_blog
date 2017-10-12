@@ -1,5 +1,5 @@
 <?php
-namespace APP;
+namespace App;
 class Database
 {
     private static $dbHost = "localhost";
@@ -9,9 +9,6 @@ class Database
 
     private static $connection = null;
 
-    /**
-     * @return null|PDO
-     */
     public static function connect()
     {
         try

@@ -1,13 +1,11 @@
 <?php
-require "header.php";
-include "../include/PostController.php";
+use App\PostController;
 
 $titleError = $contentError = $authorError = $photoError = $title = $content = $author = $photo = "";
 $datas = $_POST;
 $post_controller = new PostController();
 $post_controller->addPost($datas);
 ?>
-
 
 <div id="blue">
 		<div class="container">
@@ -19,10 +17,9 @@ $post_controller->addPost($datas);
 		</div><!-- container -->
 	</div><!-- blue wrap -->
 
-
 	<div class="container w">
         <div class="container" id="addpost">
-            <form class="form" method="post" action="addpost.php" enctype="multipart/form-data">
+            <form class="form" method="post" action="index.php?addpost" enctype="multipart/form-data">
                 <div class="form-group row">
                     <label for="title" class="col-sm-2 col-form-label">Titre du post</label>
                     <div class="col-sm-10">
@@ -61,5 +58,3 @@ $post_controller->addPost($datas);
             </form>
         </div>
     </div><!-- container -->
-
-<?php require "footer.php"; ?>

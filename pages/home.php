@@ -1,5 +1,3 @@
-<?php require "include/header.php"; ?>
-
 <div id="headerwrap">
     <div class="container">
         <div class="row centered">
@@ -122,5 +120,3 @@
     </form>
 </div>
 <!--                    FIN CONTACT                                                    -->
-
-<?php require "include/footer.php"; ?>

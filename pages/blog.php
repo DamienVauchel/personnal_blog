@@ -1,5 +1,4 @@
 <?php
-require "include/header.php";
 use APP\PostController;
 
 $post_controller = new PostController();
@@ -51,5 +50,3 @@ $post_controller = new PostController();
     <?php endforeach; ?>
 <!--Database::disconnect();-->
 </div>
-
-<?php require "include/footer.php"; ?>

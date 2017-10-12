@@ -1,5 +1,5 @@
 <?php
-namespace APP;
+namespace App;
 class Autoloader
 {
     public static function register()
@@ -10,6 +10,7 @@ class Autoloader
     public static function autoload($class)
     {
         $class = str_replace(__NAMESPACE__."\\", "", $class);
-        require "Class/".$class.".php";
+        $class = str_replace("\\", "/", $class);
+        require "app/".$class.".php";
     }
 }

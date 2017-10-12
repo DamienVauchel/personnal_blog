@@ -1,5 +1,5 @@
 <?php
-namespace APP;
+namespace App;
 class PostManager
 {
     // ATTRIBUTES
@@ -33,24 +33,6 @@ class PostManager
         return $post;
 //        Database::disconnect();
     }
-
-//    public function getAll()
-//    {
-//        $statement = $this->database->query(" SELECT *
-//                                              FROM post
-//                                              ORDER BY date_creation DESC");
-//
-////        die(var_dump($statement));
-//        $datas = $statement->fetch();
-//        $posts = [];
-//        while($data = $datas)
-//        {
-//            $id = $data["id"];
-//            $post = $this->getPost($id);
-//            $posts[] = $post;
-//        }
-//        die(var_dump($posts));
-//        return $posts;
 
     public function getAll()
     {

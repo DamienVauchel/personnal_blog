@@ -1,15 +1,15 @@
 <?php
-use APP\Autoloader;
-use APP\PostController;
+use App\Autoloader;
+use App\PostController;
+use App\Functions;
 
 define("APP_ROOT", __DIR__);
-require "Class/Autoloader.php";
+require "app/Autoloader.php";
 Autoloader::register();
-
 //echo APP_ROOT;
-//die();
 $post_controller = new PostController();
 
+ob_start();
 if (empty($_SERVER["QUERY_STRING"]) || isset($_GET['home']))
 {
     $post_controller->home();
@@ -26,6 +26,13 @@ elseif(!empty($_GET['id']) && isset($_POST["suppr"]))
 {
     $post_controller->supprPost();
 }
+elseif(isset($_GET['addpost']))
+{
+    $post_controller->getAddPost();
+}
+$content = ob_get_clean();
+
+require 'pages/templates/default.php';
 
 
 

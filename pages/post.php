@@ -1,5 +1,3 @@
-<?php require "../include/header.php"; ?>
-
     <div id="blue">
         <div class="container">
             <div class="row centered">
@@ -65,7 +63,7 @@
                             <div>Etes-vous certain(e) de vouloir supprimer le post?</div>
                         </div>
                         <div class="modal-footer">
-                            <form action="blog_post.php?id=<?= $post->getId(); ?>" method="post">
+                            <form action="post.php?id=<?= $post->getId(); ?>" method="post">
                                 <input type="submit" class="btn btn-danger" name="suppr" value="Oui">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
                             </form>
@@ -77,5 +75,3 @@
             <br>
         </div><!-- row -->
     </div>
-
-<?php require "../include/footer.php"; ?>

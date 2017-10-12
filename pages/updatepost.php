@@ -1,7 +1,7 @@
 <?php
 require "header.php";
 require "../MODEL/admin/Database.php";
-require "../include/functions.php";
+require "../include/Functions.php";
 
 if(!empty($_GET['id']))
 {
@@ -85,7 +85,7 @@ if(!empty($_POST)) {
         }
 
         Database::disconnect();
-        header("Location: blog_post.php?id=".$id);
+        header("Location: post.php?id=".$id);
     }
 }
 else

@@ -1,5 +1,5 @@
 <?php
-namespace APP;
+namespace App;
 class Post
 {
     // ATTRIBUTES

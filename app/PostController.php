@@ -1,5 +1,5 @@
 <?php
-namespace APP;
+namespace App;
 class PostController
 {
     protected $db;
@@ -13,8 +13,8 @@ class PostController
 
     public function home()
     {
-//        return header('Location:  VIEW/home.php');
-        include "VIEW/home.php";
+//        return header('Location:  pages/home.php');
+        include "pages/home.php";
     }
 
     public function addPost($datas)
@@ -22,10 +22,10 @@ class PostController
         $tableError = [];
 
         if(!empty($datas)) {
-            $title              =       checkInput($datas['title']);
-            $content            =       checkInput($datas['content']);
-            $author             =       checkInput($datas['author']);
-            $photo              =       checkInput($_FILES['photo']['name']);
+            $title              =       Functions::checkInput($datas['title']);
+            $content            =       Functions::checkInput($datas['content']);
+            $author             =       Functions::checkInput($datas['author']);
+            $photo              =       Functions::checkInput($_FILES['photo']['name']);
             $photoPath          =       "assets/post_photo/" . basename($photo); // Chemin de l'image
             $photoExtension     =       pathinfo($photoPath, PATHINFO_EXTENSION);
             $isSuccess          =       true;
@@ -91,7 +91,7 @@ class PostController
             {
                 $this->post_manager->createPost($title, $content, $author, $photo);
                 Database::disconnect();
-                header("Location: blog.php");
+                header("Location: index.php?blog");
             }
 //            else
 //            {
@@ -104,7 +104,7 @@ class PostController
     {
         if(!empty($_GET['id']))
         {
-            $id = checkinput($_GET['id']);
+            $id = Functions::checkinput($_GET['id']);
         }
         else
         {
@@ -112,14 +112,14 @@ class PostController
         }
 
         $post = $this->post_manager->getPost($id);
-        include "../VIEW/blog_post.php";
+        include "pages/post.php";
     }
 
     public function supprPost()
     {
         if(!empty($_GET['id']))
         {
-            $id = checkinput($_GET['id']);
+            $id = Functions::checkinput($_GET['id']);
         }
 
         if(isset($_POST["suppr"]))
@@ -127,7 +127,7 @@ class PostController
             $this->post_manager->delete();
 
             Database::disconnect();
-            header("Location: blog.php");
+            header("Location: pages/blog.php");
         }
     }
 
@@ -136,6 +136,11 @@ class PostController
         $db = Database::connect();
         $post_manager = new PostManager($db);
         $posts = $post_manager->getAll($db);
-        include "VIEW/blog.php";
+        include "pages/blog.php";
+    }
+
+    public function getAddPost()
+    {
+        include "pages/addpost.php";
     }
 }

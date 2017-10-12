@@ -87,7 +87,7 @@ class ClassLoader
     }
 
     /**
-     * @param array $classMap Class to filename map
+     * @param array $classMap app to filename map
      */
     public function addClassMap(array $classMap)
     {
