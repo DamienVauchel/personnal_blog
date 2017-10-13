@@ -1,3 +1,5 @@
+<?php \App\Functions::contact(); ?>
+
 <div id="headerwrap">
     <div class="container">
         <div class="row centered">

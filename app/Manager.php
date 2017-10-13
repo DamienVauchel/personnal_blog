@@ -60,7 +60,7 @@ class Manager
     public function updatePostNoPhoto($title, $content, $author, $id) // To update a photo without photo updated
     {
         $statement = $this->database->prepare("  UPDATE post 
-                                                 SET title = ?, content = ?, author = ?, date_creation = NOW() 
+                                                 SET title = ?, content = ?, author = ?, creation_date = NOW() 
                                                  WHERE id = ?");
         $statement->execute(array($title, $content, $author, $id));
         return $statement;

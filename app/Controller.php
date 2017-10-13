@@ -112,7 +112,7 @@ class Controller
         $tableError = [];
         if (isset($_GET['id']))
         {
-            $id = $_GET['id'];
+            $id = Functions::checkInput($_GET['id']);
         }
 
         if(!empty($datas)) {
@@ -120,7 +120,7 @@ class Controller
             $content            =       Functions::checkInput($datas['content']);
             $author             =       Functions::checkInput($datas['author']);
             $photo              =       Functions::checkInput($_FILES['photo']['name']);
-            $photoPath          =       "assets/post_photo/" . basename($photo);
+            $photoPath          =       "assets/post_photo/".basename($photo);
             $photoExtension     =       pathinfo($photoPath, PATHINFO_EXTENSION);
 
             if(!isset($title))
@@ -137,8 +137,8 @@ class Controller
 
             if(empty($author))
             {
-                $authorError = "Ce champ ne peut pas être vide";
-                $tableError[] = ["author" => $authorError];
+            $authorError = "Ce champ ne peut pas être vide";
+            $tableError[] = ["author" => $authorError];
             }
 
             if(empty($photo))
@@ -177,30 +177,31 @@ class Controller
                 }
             }
 
-//            if(empty($tableError))
-//            {
+            if(empty($tableError))
+            {
                 if($isPhotoUpdated)
                 {
                     $this->post_manager->updatePostWithPhoto($title, $content, $author, $photo, $id);
-                    Database::disconnect();
-//                    header("Location: index.php?post&id=".$id);
+                    header("Location: index.php?post&id=".$id);
                 }
                 else
                 {
                     $this->post_manager->updatePostNoPhoto($title, $content, $author, $id);
-                    Database::disconnect();
-//                    header("Location: index.php?post&id=".$id);
+                    header("Location: index.php?post&id=".$id);
                 }
-//            }
+            }
+            else
+            {
+                return $tableError;
+            }
         }
         else
         {
             $post = $this->post_manager->getPost($id);
-            $title = $post->getTitle();
-            $content = $post->getContent();
-            $author = $post->getAuthor();
-            $photo = $post->getPhoto();
-            Database::disconnect();
+            return $title = $post->getTitle();
+            return $content = $post->getContent();
+            return $author = $post->getAuthor();
+            return $photo = $post->getPhoto();
         }
     }
 

@@ -14,8 +14,11 @@ $post = $post_manager->getPost($id);
 Database::disconnect();
 
 $datas = $_POST;
-$post_controller = new Controller();
-$post_controller->updatePost($datas);
+if (isset($datas['updatePost']))
+{
+    $post_controller = new Controller();
+    $post_controller->updatePost($datas);
+}
 ?>
     <div id="blue">
         <div class="container">
@@ -26,7 +29,6 @@ $post_controller->updatePost($datas);
             </div><!-- row -->
         </div><!-- container -->
     </div><!-- blue wrap -->
-<?php var_dump($datas); ?>
 
     <div class="container w">
         <div class="container" id="updatepost">
