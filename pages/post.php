@@ -37,7 +37,7 @@
     <div class="container desc">
         <div class="row thumbnail">
             <br>
-            <div class="text-left"><a href="updatepost.php?id=<?= $post->getId(); ?>" class="btn btn-primary">Modifier l'article</a></div>
+            <div class="text-left"><a href="index.php?update&id=<?= $post->getId(); ?>" class="btn btn-primary">Modifier l'article</a></div>
             <br>
             <br>
             <div class="col-xs-12">

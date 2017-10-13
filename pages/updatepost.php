@@ -1,227 +1,22 @@
 <?php
-require "header.php";
-require "../MODEL/admin/Database.php";
-require "../include/Functions.php";
+use App\Controller;
+use App\Manager;
+use App\Database;
+use App\Functions;
 
 if(!empty($_GET['id']))
 {
-    $id = checkInput($_GET['id']);
+    $id = Functions::checkInput($_GET['id']);
 }
+$db = Database::connect();
+$post_manager = new Manager($db);
+$post = $post_manager->getPost($id);
+Database::disconnect();
 
-$titreErreur = $contenuErreur = $auteurErreur = $photoErreur = $titre = $contenu = $auteur = $photo = "";
-
-if(!empty($_POST)) {
-    $titre              =       checkInput($_POST['title']);
-    $contenu            =       checkInput($_POST['content']);
-    $auteur             =       checkInput($_POST['author']);
-    $photo              =       checkInput($_FILES['photo']['name']);
-    $photoPath          =       "../assets/post_photo/" . basename($photo); // Chemin de l'image
-    $photoExtension     =       pathinfo($photoPath, PATHINFO_EXTENSION);
-    $isSuccess          =       true;
-
-    if(empty($titre)) {
-        $titreErreur = "Ce champ ne peut pas être vide";
-        $isSuccess = false;
-    }
-
-    if(empty($contenu)) {
-        $contenuErreur = "Ce champ ne peut pas être vide";
-        $isSuccess = false;
-    }
-
-    if(empty($auteur))
-    {
-        $auteurErreur = "Ce champ ne peut pas être vide";
-        $isSuccess = false;
-    }
-
-    if(empty($photo))
-    {
-        $isPhotoUpdated = false;
-    }
-    else
-    {
-        $isPhotoUpdated = true;
-        $isUploadSuccess = true;
-
-        if($photoExtension != "jpg" && $photoExtension != "png" && $photoExtension != "jpeg") {
-            $photoErreur = "Les fichiers autorisés sont: .jpg, .jpeg, .png";
-            $isUploadSuccess = false;
-        }
-
-        if(file_exists($photoPath)) {
-            $photoErreur = "Le fichier existe déjà";
-            $isUploadSuccess = false;
-        }
-
-        if($_FILES['photo']['size'] > 5000000) {
-            $imageError = "Le fichier ne peut pas dépasser les 5 MB";
-            $isUploadSuccess = false;
-        }
-
-        if($isUploadSuccess) {
-            if(!move_uploaded_file($_FILES['photo']['tmp_name'], $photoPath)) {
-                $photoErreur = "Il y a eu une erreur lors de l'upload";
-                $isUploadSuccess = false;
-            }
-        }
-    }
-
-    if(($isSuccess && $isPhotoUpdated && $isUploadSuccess) || ($isSuccess && !$isPhotoUpdated )) {
-        $db = Database::connect();
-        if($isPhotoUpdated)
-        {
-            $statement = $db->prepare("  UPDATE post 
-                                         SET title = ?, content = ?, author = ?, photo = ?, date_creation = NOW() 
-                                         WHERE id = ?");
-            $statement->execute(array($titre, $contenu, $auteur, $photo, $id));
-        }
-        else
-        {
-            $statement = $db->prepare("  UPDATE post 
-                                         SET title = ?, content = ?, author = ?, date_creation = NOW() 
-                                         WHERE id = ?");
-            $statement->execute(array($titre, $contenu, $auteur, $id));
-        }
-
-        Database::disconnect();
-        header("Location: post.php?id=".$id);
-    }
-}
-else
-{
-    $db = Database::connect();
-    $statement = $db->prepare("SELECT * FROM post WHERE id = ?;");
-    $statement->execute(array($id));
-    $post = $statement->fetch();
-    $titre = $post['title'];
-    $contenu = $post['content'];
-    $auteur = $post['author'];
-    $photo = $post['photo'];
-
-    Database::disconnect();
-}
+$datas = $_POST;
+$post_controller = new Controller();
+$post_controller->updatePost($datas);
 ?>
-<?php
-//require '../MODEL/admin/Database.php';
-//
-//$titleError = $contentError = $authorError = $photoError = $title = $content = $author = $photo = "";
-//
-//if(!empty($_POST))
-//{
-//    $title          = checkInput($_POST['title']);
-//    $content        = checkInput($_POST['content']);
-//    $author         = checkInput($_POST['author']);
-//    $photo          = checkInput($_FILES['photo']['name']);
-//    $photoPath      = "../assets/post_photo/" . basename($photo); // Chemin de l'image
-//    $photoExtension = pathinfo($photoPath, PATHINFO_EXTENSION);
-//    $isSuccess      = true;
-//
-//    if (empty($title))
-//    {
-//        $titleError = "Ce champ ne peut pas être vide";
-//        $isSuccess = false;
-//    }
-//
-//    if (empty($content))
-//    {
-//        $contentError = "Ce champ ne peut pas être vide";
-//        $isSuccess = false;
-//    }
-//
-//    if (empty($author))
-//    {
-//        $authorError = "Ce champ ne peut pas être vide";
-//        $isSuccess = false;
-//    }
-//
-//    if (empty($photo))
-//    {
-//        $photoError = "Ce champ ne peut pas être vide";
-//        $isSuccess = false;
-//    }
-//    else
-//    {
-//        $isUploadSuccess = true;
-//
-//        if ($photoExtension != "jpg" && $photoExtension != "png" && $photoExtension != "jpeg")
-//        {
-//            $photoError = "Les fichiers autorisés sont: .jpg, .jpeg, .png";
-//            $isUploadSuccess = false;
-//        }
-//
-//        if (file_exists($photoPath))
-//        {
-//            $photoError = "Le fichier existe déjà";
-//            $isUploadSuccess = false;
-//        }
-//
-//        if ($_FILES['photo']['size'] > 5000000)
-//        {
-//            $imageError = "Le fichier ne peut pas dépasser les 5 MB";
-//            $isUploadSuccess = false;
-//        }
-//
-//        if ($isUploadSuccess)
-//        {
-//            if (!move_uploaded_file($_FILES['photo']['tmp_name'], $photoPath))
-//            {
-//                $photoError = "Il y a eu une erreur lors de l'upload";
-//                $isUploadSuccess = false;
-//            }
-//        }
-//    }
-//
-//    if (($isSuccess && $isPhotoUpdated && $isUploadSuccess) || ($isSuccess && !$isPhotoUpdated)) {
-//        $db = Database::connect();
-//        if ($isPhotoUpdated)
-//        {
-//            $statement = $db->prepare("UPDATE post SET title = ?, content = ?, author = ?, photo = ?, date_modif = NOW() WHERE id = ?");
-//            $statement->execute(array($title, $content, $author, $photo, $id));
-//        }
-//        else
-//        {
-//            $statement = $db->prepare("UPDATE post SET title = ?, content = ?, author = ?, date_modif = NOW() WHERE id = ?");
-//            $statement->execute(array($title, $content, $author, $id));
-//        }
-//
-//        Database::disconnect();
-//        header("Location: blog.php");
-//    }
-//    elseif ($isPhotoUpdated && !$isUploadSuccess)
-//    {
-//        $db = Database::connect();
-//        $statement = $db->prepare("SELECT photo FROM post WHERE id = ?;");
-//        $statement->execute(array($id));
-//        $post = $statement->fetch();
-//        $photo = $post['photo'];
-//
-//        Database::disconnect();
-//    }
-//}
-//else
-//{
-//    $db = Database::connect();
-//    $statement = $db->prepare("SELECT * FROM post WHERE id = ?;");
-//    $statement->execute(array($id));
-//    $post = $statement->fetch();
-//    $title = $post['title'];
-//    $content = $post['content'];
-//    $author = $post['author'];
-//    $photo = $post['photo'];
-//
-//    Database::disconnect();
-//}
-//
-//function checkInput($data)
-//{
-//    $data = trim($data);
-//    $data = stripslashes($data);
-//    $data = htmlspecialchars($data);
-//    return $data;
-//}
-//
-//?>
     <div id="blue">
         <div class="container">
             <div class="row centered">
@@ -231,41 +26,41 @@ else
             </div><!-- row -->
         </div><!-- container -->
     </div><!-- blue wrap -->
-
+<?php var_dump($datas); ?>
 
     <div class="container w">
         <div class="container" id="updatepost">
-            <form class="form" method="post" action="updatepost.php?id=<?php echo $post["id"]; ?>" enctype="multipart/form-data">
+            <form class="form" method="post" action="index.php?update&id=<?= $post->getId(); ?>" enctype="multipart/form-data">
                 <div class="form-group row">
-                    <label for="titre" class="col-sm-2 col-form-label">Titre du post</label>
+                    <label for="title" class="col-sm-2 col-form-label">Titre du post</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="titre" id="titre" value="<?php echo $titre; ?>">
-                        <span class="help-inline"><?php echo $titreErreur ?></span>
+                        <input type="text" class="form-control" name="title" id="title" value="<?= $post->getTitle(); ?>">
+                        <span class="help-inline"><?php if (isset($tableError['title'])) {echo $tableError['title'];} ?></span>
                     </div>
                 </div>
                 <br>
                 <div class="form-group row">
-                    <label for="auteur" class="col-sm-2 col-form-label">Auteur</label>
+                    <label for="author" class="col-sm-2 col-form-label">Auteur</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="auteur" id="auteur" value="<?php echo $auteur; ?>">
-                        <span class="help-inline"><?php echo $auteurErreur ?></span>
+                        <input type="text" class="form-control" name="author" id="author" value="<?= $post->getAuthor(); ?>">
+                        <span class="help-inline"><?php if (isset($tableError['title'])) {echo $tableError['title'];} ?></span>
                     </div>
                 </div>
                 <br>
                 <div class="form-group row">
                     <label for="photo" class="col-sm-2 col-form-label">Photo du post (.jpg ou .png)</label>
                     <div class="col-sm-10">
-                        <img src="../assets/post_photo/<?php echo $photo; ?>" alt="">
+                        <img src="assets/post_photo/<?= $post->getPhoto(); ?>" alt="">
                         <input type="file" class="form-control-file" name="photo" id="photo">
-                        <span class="help-inline"><?php echo $photoErreur ?></span>
+                        <span class="help-inline"><?php if (isset($tableError['title'])) {echo $tableError['title'];} ?></span>
                     </div>
                 </div>
                 <br>
                 <div class="form-group row">
-                    <label for="contenu" class="col-sm-2 col-form-label">Contenu du post</label>
+                    <label for="content" class="col-sm-2 col-form-label">Contenu du post</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control animated" rows="10" name="contenu"><?php echo $contenu; ?></textarea>
-                        <span class="help-inline"><?php echo $contenuErreur ?></span>
+                        <textarea class="form-control animated" rows="10" name="content"><?= $post->getContent(); ?></textarea>
+                        <span class="help-inline"><?php if (isset($tableError['title'])) {echo $tableError['title'];} ?></span>
                         <small><em>Le cadre peut être redimensionné</em></small>
                     </div>
                 </div>
@@ -275,5 +70,3 @@ else
             </form>
         </div>
     </div><!-- container -->
-
-<?php require "footer.php"; ?>

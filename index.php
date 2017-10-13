@@ -1,5 +1,4 @@
 <?php
-session_start();
 use App\Autoloader;
 use App\Controller;
 use App\Functions;
@@ -19,7 +18,7 @@ elseif (isset($_GET["blog"]))
 {
     $post_controller->getList();
 }
-elseif (isset($_GET["blog_post"]) && isset($_GET["id"]))
+elseif (isset($_GET["post"]) && isset($_GET["id"]))
 {
     $post_controller->getPost();
 }
@@ -30,6 +29,10 @@ elseif(!empty($_GET['id']) && isset($_POST["suppr"]))
 elseif(isset($_GET['addpost']))
 {
     $post_controller->getAddPost();
+}
+elseif(isset($_GET['update']))
+{
+    $post_controller->getUpdatePost();
 }
 $content = ob_get_clean();
 

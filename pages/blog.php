@@ -23,7 +23,7 @@ $post_controller = new Controller();
 //            $category_id = $post->getCategoryId();
 //            $post_category = $post_controller->findCategory($category_id);
             ?>
-            <a href="index.php?blog_post&id=<?= $post->getId(); ?>">
+            <a href="index.php?post&id=<?= $post->getId(); ?>">
                 <div class="row thumbnail">
                     <div class="col-md-6">
                         <img src="assets/post_photo/<?= $post->getPhoto(); ?>" alt="" style="max-width: 100%;">

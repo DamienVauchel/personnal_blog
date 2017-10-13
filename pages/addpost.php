@@ -5,7 +5,6 @@ $title = $content = $author = $photo = "";
 $datas = $_POST;
 $post_controller = new Controller();
 $post_controller->addPost($datas);
-//var_dump($tableError);
 ?>
 
 <div id="blue">
@@ -18,7 +17,7 @@ $post_controller->addPost($datas);
 		</div><!-- container -->
 	</div><!-- blue wrap -->
 <?php
-var_dump($tableError);
+//var_dump($tableError);
 ?>
 	<div class="container w">
         <div class="container" id="addpost">
