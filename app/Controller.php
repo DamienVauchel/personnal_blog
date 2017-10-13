@@ -19,7 +19,7 @@ class Controller
 
     public function addPost($datas)
     {
-        $tableError = [];
+        $_SESSION['error'] = $tableError = [];
 
         if(!empty($datas)) {
             $title              =       Functions::checkInput($datas['title']);
@@ -28,75 +28,74 @@ class Controller
             $photo              =       Functions::checkInput($_FILES['photo']['name']);
             $photoPath          =       "assets/post_photo/" . basename($photo); // Chemin de l'image
             $photoExtension     =       pathinfo($photoPath, PATHINFO_EXTENSION);
-            $isSuccess          =       true;
-            $isUploadSuccess    =       false;
 
             if(empty($title))
             {
                 $titleError = "Ce champ ne peut pas être vide";
                 $tableError[] = ["title" => $titleError];
-                $isSuccess = false;
             }
 
             if(empty($content))
             {
                 $contentError = "Ce champ ne peut pas être vide";
-                $isSuccess = false;
+                $tableError[] = ["content" => $contentError];
             }
 
             if(empty($author))
             {
                 $authorError = "Ce champ ne peut pas être vide";
-                $isSuccess = false;
+                $tableError[] = ["author" => $authorError];
             }
 
             if(empty($photo))
             {
                 $photoError = "Ce champ ne peut pas être vide";
-                $isSuccess = false;
+                $tableError[] = ["photo" => $photoError];
             }
             else
             {
-                $isUploadSuccess = true;
-
                 if($photoExtension != "jpg" && $photoExtension != "png" && $photoExtension != "jpeg")
                 {
                     $photoError = "Les fichiers autorisés sont: .jpg, .jpeg, .png";
-                    $isUploadSuccess = false;
+                    $tableError[] = ["photo" => $photoError];
+//                    $isUploadSuccess = false;
                 }
 
                 if(file_exists($photoPath))
                 {
                     $photoError = "Le fichier existe déjà";
-                    $isUploadSuccess = false;
+                    $tableError[] = ["photo" => $photoError];
+//                    $isUploadSuccess = false;
                 }
 
                 if($_FILES['photo']['size'] > 5000000)
                 {
                     $photoError = "Le fichier ne peut pas dépasser les 5 MB";
-                    $isUploadSuccess = false;
+                    $tableError[] = ["photo" => $photoError];
+//                    $isUploadSuccess = false;
                 }
 
-                if($isUploadSuccess)
+                if(!isset($tableError['photo']))
                 {
                     if(!move_uploaded_file($_FILES['photo']['tmp_name'], $photoPath))
                     {
                         $photoError = "Il y a eu une erreur lors de l'upload";
-                        $isUploadSuccess = false;
+                        $tableError[] = ["photo" => $photoError];
+//                        $isUploadSuccess = false;
                     }
                 }
             }
 
-            if($isSuccess && $isUploadSuccess)
+            if(empty($tableError))
             {
                 $this->post_manager->createPost($title, $content, $author, $photo);
                 Database::disconnect();
                 header("Location: index.php?blog");
             }
-//            else
-//            {
-//                return $tableError;
-//            }
+            else
+            {
+                return $tableError = "Titre invalide!";
+            }
         }
     }
 

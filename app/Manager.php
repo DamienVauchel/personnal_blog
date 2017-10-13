@@ -27,11 +27,8 @@ class Manager
                                                   WHERE id = ?");
         $statement->execute(array($id));
         $datas = $statement->fetch();
-//        die(var_dump($datas));
         $post = new Post($datas);
-//        die(var_dump($post));
         return $post;
-//        Database::disconnect();
     }
 
     public function getAll()
@@ -45,35 +42,33 @@ class Manager
         {
             $posts[] = new Post($datas);
         }
-
-//        die(var_dump($posts));
         return $posts;
     }
 
-    public function getAllCategories()
-    {
-        $categories = [];
-        $statement = $this->database->query("   SELECT *
-                                                FROM category");
-        while($datas = $statement->fetch())
-        {
-            $categories[] = new Category($datas);
-        }
+//    public function getAllCategories()
+//    {
+//        $categories = [];
+//        $statement = $this->database->query("   SELECT *
+//                                                FROM category");
+//        while($datas = $statement->fetch())
+//        {
+//            $categories[] = new Category($datas);
+//        }
+//
+//        return $categories;
+//    }
 
-        return $categories;
-    }
-
-    public function findCategory($id)
-    {
-        $statement = $this->database->prepare("   SELECT *
-                                                  FROM category
-                                                  WHERE id = ?");
-        $statement->execute(array($id));
-        $datas = $statement->fetch();
-        $category = new Category($datas);
-
-        return $category;
-    }
+//    public function findCategory($id)
+//    {
+//        $statement = $this->database->prepare("   SELECT *
+//                                                  FROM category
+//                                                  WHERE id = ?");
+//        $statement->execute(array($id));
+//        $datas = $statement->fetch();
+//        $category = new Category($datas);
+//
+//        return $category;
+//    }
 
     public function delete($id)
     {

@@ -1,4 +1,5 @@
 <?php
+session_start();
 use App\Autoloader;
 use App\Controller;
 use App\Functions;
