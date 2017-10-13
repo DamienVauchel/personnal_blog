@@ -48,30 +48,7 @@
                 <p><?= $post->getContent(); ?></p>
             </div>
             <br>
-            <div class="text-right"><a class="btn btn-danger" data-toggle="modal" data-target="#suppressModal">Supprimer l'article</a></div>
-            <!-- Modal -->
-            <div class="modal fade" id="suppressModal" tabindex="-1" role="dialog" aria-labelledby="suppressModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="suppressModalLabel">Suppression de post</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div>Etes-vous certain(e) de vouloir supprimer le post?</div>
-                        </div>
-                        <div class="modal-footer">
-                            <form action="index.php?post&id=<?= $post->getId(); ?>" method="post">
-                                <input type="submit" class="btn btn-danger" name="suppr" value="Oui">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Fin du Modal -->
+            <div class="text-right"><a class="btn btn-danger" href="index.php?delete&id=<?= $post->getId(); ?>">Supprimer l'article</a></div>
             <br>
         </div><!-- row -->
     </div>

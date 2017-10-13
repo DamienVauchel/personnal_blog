@@ -29,6 +29,11 @@ class Controller
         include "pages/updatepost.php";
     }
 
+    public function getDeletePost() // To go to delete.php
+    {
+        include "pages/delete.php";
+    }
+
     public function addPost($datas) // To add a post from the addpost.php form
     {
         $tableError = [];
@@ -97,7 +102,6 @@ class Controller
             if(empty($tableError))
             {
                 $this->post_manager->createPost($title, $content, $author, $photo);
-                Database::disconnect();
                 header("Location: index.php?blog");
             }
             else
@@ -221,19 +225,10 @@ class Controller
         Database::disconnect();
     }
 
-    public function supprPost() // To suppress one post by its id
+    public function supprPost($id) // To suppress one post by its id
     {
-        if(!empty($_GET['id']))
-        {
-            $id = Functions::checkinput($_GET['id']);
-        }
-
-        if(isset($_POST["suppr"]))
-        {
-            $this->post_manager->delete($_GET['id']);
-            Database::disconnect();
-            header("Location: index.php?blog");
-        }
+        $this->post_manager->delete($id);
+        header("Location: index.php?blog");
     }
 
     public function getList() // To get all the posts and redirect to blog.php page

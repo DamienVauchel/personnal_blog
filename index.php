@@ -22,10 +22,6 @@ elseif (isset($_GET["post"]) && isset($_GET["id"]))
 {
     $post_controller->getPost();
 }
-elseif(!empty($_GET['id']) && isset($_POST["suppr"]))
-{
-    $post_controller->supprPost();
-}
 elseif(isset($_GET['addpost']))
 {
     $post_controller->getAddPost();
@@ -33,6 +29,10 @@ elseif(isset($_GET['addpost']))
 elseif(isset($_GET['update']))
 {
     $post_controller->getUpdatePost();
+}
+elseif(isset($_GET['delete']))
+{
+    $post_controller->getDeletePost();
 }
 $content = ob_get_clean();
 
