@@ -1,7 +1,6 @@
 <?php
 use App\Autoloader;
 use App\Controller;
-use App\Functions;
 
 define("APP_ROOT", __DIR__);
 require "app/Autoloader.php";
@@ -34,6 +33,4 @@ $content = ob_get_clean();
 
 require 'pages/templates/default.php';
 
-
-
-die;
+die();

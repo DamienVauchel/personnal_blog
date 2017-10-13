@@ -29,11 +29,6 @@ class Controller
         include "pages/updatepost.php";
     }
 
-//    public function getDeletePost() // To go to delete.php
-//    {
-//        include "pages/delete.php";
-//    }
-
     public function addPost($datas) // To add a post from the addpost.php form
     {
         $tableError = [];

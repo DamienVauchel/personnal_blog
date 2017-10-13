@@ -52,7 +52,7 @@ if (isset($datas['updatePost']))
                 <div class="form-group row">
                     <label for="photo" class="col-sm-2 col-form-label">Photo du post (.jpg ou .png)</label>
                     <div class="col-sm-10">
-                        <img src="assets/post_photo/<?= $post->getPhoto(); ?>" alt="">
+                        <img src="assets/post_photo/<?= $post->getPhoto(); ?>" alt="" style="width: 100%;">
                         <input type="file" class="form-control-file" name="photo" id="photo">
                         <span class="help-inline"><?php if (isset($tableError['title'])) {echo $tableError['title'];} ?></span>
                     </div>
