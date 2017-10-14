@@ -31,7 +31,7 @@ class ErrorMessage
         }
     }
 
-    public static function getAddPhotoError($photo, $photoExtension, $photoPath) // Return photoError in tableError if no photo
+    public static function getPhotoError($photo, $photoExtension, $photoPath) // Return photoError in tableError if no photo
     {
         if(empty($photo))
         {

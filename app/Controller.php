@@ -44,7 +44,7 @@ class Controller
 
             $tableError[] = ErrorMessage::getTitleError($title);
             $tableError[] = ErrorMessage::getAuthorError($author);
-            $tableError[] = ErrorMessage::getAddPhotoError($photo, $photoExtension, $photoPath);
+            $tableError[] = ErrorMessage::getPhotoError($photo, $photoExtension, $photoPath);
             $tableError[] = ErrorMessage::getContentError($content);
 
             if (empty(array_filter($tableError))) {
@@ -84,67 +84,27 @@ class Controller
             $photoPath          =       "assets/post_photo/".basename($photo);
             $photoExtension     =       pathinfo($photoPath, PATHINFO_EXTENSION);
 
-            if(empty($photo))
-            {
-                $isPhotoUpdated = false;
-            }
-            else
-            {
-                $isPhotoUpdated = true;
+            $tableError[] = ErrorMessage::getTitleError($title);
+            $tableError[] = ErrorMessage::getAuthorError($author);
+//            $tableError[] = ErrorMessage::getPhotoError($photo, $photoExtension, $photoPath);
+            $tableError[] = ErrorMessage::getContentError($content);
 
-                if($photoExtension != "jpg" && $photoExtension != "png" && $photoExtension != "jpeg")
-                {
-                    $photoError = "Les fichiers autorisés sont: .jpg, .jpeg, .png";
-                    $tableError[] = ["photo" => $photoError];
-                }
-
-                if(file_exists($photoPath))
-                {
-                    $photoError = "Le fichier existe déjà";
-                    $tableError[] = ["photo" => $photoError];
-                }
-
-                if($_FILES['photo']['size'] > 5000000)
-                {
-                    $photoError = "Le fichier ne peut pas dépasser les 5 MB";
-                    $tableError[] = ["photo" => $photoError];
-                }
-
-                if(!isset($tableError['photo']))
-                {
-                    if(!move_uploaded_file($_FILES['photo']['tmp_name'], $photoPath))
-                    {
-                        $photoError = "Il y a eu une erreur lors de l'upload";
-                        $tableError[] = ["photo" => $photoError];
-                    }
+            if (empty(array_filter($tableError))) {
+                if (!move_uploaded_file($_FILES['photo']['tmp_name'], $photoPath)) {
+                    $photoError = "Il y a eu une erreur lors de l'upload";
+                    return $tableError[] = ["photo" => $photoError];
                 }
             }
 
-            if(empty($tableError))
+            if (empty(array_filter($tableError)))
             {
-                if($isPhotoUpdated)
-                {
                     $this->post_manager->updatePostWithPhoto($title, $content, $author, $photo, $id);
                     header("Location: index.php?post&id=".$id);
-                }
-                else
-                {
-                    $this->post_manager->updatePostNoPhoto($title, $content, $author, $id);
-                    header("Location: index.php?post&id=".$id);
-                }
             }
             else
             {
-                return $tableError;
+                return $_SESSION['tableError'] = $tableError;
             }
-        }
-        else
-        {
-            $post = $this->post_manager->getPost($id);
-            return $title = $post->getTitle();
-            return $content = $post->getContent();
-            return $author = $post->getAuthor();
-            return $photo = $post->getPhoto();
         }
     }
 
@@ -188,19 +148,4 @@ class Controller
         Database::disconnect();
         include "pages/blog.php";
     }
-
-
-//    public function getCategoryList()
-//    {
-//        $db = Database::connect();
-//        $post_manager = new Manager($db);
-//        return $post_manager->getAllCategories($db);
-//    }
-
-//    public function findCategory($id)
-//    {
-//        $db = Database::connect();
-//        $manager = new Manager($db);
-//        return $manager->findCategory($id);
-//    }
 }

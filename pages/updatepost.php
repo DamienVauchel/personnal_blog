@@ -14,10 +14,11 @@ $post = $post_manager->getPost($id);
 Database::disconnect();
 
 $datas = $_POST;
-if (isset($datas['updatePost']))
+if ($datas)
 {
     $post_controller = new Controller();
     $post_controller->updatePost($datas);
+    $tableError = array_filter($_SESSION['tableError']);
 }
 ?>
     <div id="blue">
@@ -37,7 +38,7 @@ if (isset($datas['updatePost']))
                     <label for="title" class="col-sm-2 col-form-label">Titre du post</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="title" id="title" value="<?= $post->getTitle(); ?>">
-                        <span class="help-inline"><?php if (isset($tableError['title'])) {echo $tableError['title'];} ?></span>
+                        <span class="help-inline"><?php if(isset($tableError[0]["title"])) {echo $tableError[0]["title"];} ?></span>
                     </div>
                 </div>
                 <br>
@@ -45,7 +46,7 @@ if (isset($datas['updatePost']))
                     <label for="author" class="col-sm-2 col-form-label">Auteur</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="author" id="author" value="<?= $post->getAuthor(); ?>">
-                        <span class="help-inline"><?php if (isset($tableError['title'])) {echo $tableError['title'];} ?></span>
+                        <span class="help-inline"><?php if (isset($tableError[1]["author"])) {echo $tableError[1]["author"];} ?></span>
                     </div>
                 </div>
                 <br>
@@ -54,7 +55,7 @@ if (isset($datas['updatePost']))
                     <div class="col-sm-10">
                         <img src="assets/post_photo/<?= $post->getPhoto(); ?>" alt="" style="width: 100%;">
                         <input type="file" class="form-control-file" name="photo" id="photo">
-                        <span class="help-inline"><?php if (isset($tableError['title'])) {echo $tableError['title'];} ?></span>
+                        <span class="help-inline"><?php if (isset($tableError[2]['photo'])) {echo $tableError[2]['photo'];}  ?></span>
                     </div>
                 </div>
                 <br>
