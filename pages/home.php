@@ -1,4 +1,11 @@
-<?php \App\Functions::contact(); ?>
+<?php
+use App\Functions;
+use App\Controller;
+
+Functions::contact();
+$controller = new Controller();
+$posts = $controller->getHomeList();
+?>
 
 <div id="headerwrap">
     <div class="container">
@@ -13,6 +20,44 @@
     </div><!-- container -->
 </div><!-- headerwrap -->
 
+<div id="dg">
+    <div class="container">
+        <div class="row centered">
+            <h4>DERNIERS ARTICLES DU BLOG</h4>
+            <br>
+            <?php foreach($posts as $post):
+                ?>
+                <div class="col-lg-3">
+                    <div class="moveUp">
+                        <a href="index.php?post&id=<?= $post->getId(); ?>">
+                            <div class="row thumbnail">
+                                <div>
+                                    <img src="assets/post_photo/<?= $post->getPhoto(); ?>" alt="" style="max-width: 100%;">
+                                </div>
+                                <div>
+                                    <h2 class="text-center"><b><?= strtoupper($post->getTitle()); ?></b></h2>
+                                    <div class="text-right">
+                                        <small style="text-decoration: underline;">
+                                            <i class="fa fa-clock-o" aria-hidden="true"></i><?php if($post->getUpdateDate() != null)
+                                            {
+                                                echo $post->getUpdateDate();
+                                            }
+                                            else
+                                            {
+                                                echo $post->getCreationDate();
+                                            }?>
+                                        </small>
+                                    </div>
+                                    <p class="text-right">... Lire l'article</p>
+                                </div>
+                            </div><!-- row -->
+                        </a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div><!-- row -->
+    </div><!-- container -->
+</div><!-- DG -->
 
 <div class="container w">
     <div class="row centered">

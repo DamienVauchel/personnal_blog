@@ -2,6 +2,7 @@
 use App\Controller;
 
 $post_controller = new Controller();
+$paginationInfos = $post_controller->paginate();
 ?>
 
 <div id="blue">
@@ -48,5 +49,25 @@ $post_controller = new Controller();
             </a>
             <hr>
         <?php endforeach; ?>
+
+        <nav aria-label="Page navigation example" class="text-center">
+            <ul class="pagination justify-content-center">
+                <?php for($i = 1; $i <= $paginationInfos['pagesCount']; $i++)
+                {
+                    if($i == $paginationInfos['actualPage'])
+                    {
+                        ?>
+                        <li class="page-item active"><a class="page-link" href="index.php?blog&page=<?= $i; ?>"><?= $i; ?></a></li>
+                        <?php
+                    }
+                    else
+                    {
+                        ?>
+                        <li class="page-item"><a class="page-link" href="index.php?blog&page=<?= $i; ?>"><?= $i; ?></a></li>
+                        <?php
+                    }
+                } ?>
+            </ul>
+        </nav>
     </div>
 </div>
