@@ -6,7 +6,11 @@
  * Version: 1.0
  * URL: http://blacktie.co
  */
- 
+
+/*###################################################################################################################
+########################################### THEME CSS ###############################################################
+###################################################################################################################*/
+
 /* FONTS */
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,300,700,900);
@@ -81,7 +85,6 @@ a:after {
     padding: 0;
 }
 
-
 .navbar {
 	font-weight: 800;
 	font-size: 14px;
@@ -123,27 +126,6 @@ a:after {
 	letter-spacing: 1px;
 }
 
-a .fa-linkedin:hover
-{
-    color: #007bb5 !important;
-}
-
-a .fa-facebook:hover
-{
-    color: #3b5998 !important;
-}
-
-a .fa-twitter:hover
-{
-    color: #55acee !important;
-}
-
-a .fa-github:hover
-{
-    color: #fff !important;
-}
-
-
 /*TILT*/
 .tilt {
   -webkit-transition: all 0.5s ease;
@@ -159,18 +141,6 @@ a .fa-github:hover
        -o-transform: rotate(-10deg);
       -ms-transform: rotate(-10deg);
           transform: rotate(-10deg);
-}
-
-/* MOVE UP */
-.moveUp
-{
-	transition: transform .3s ease-out;
-	display: inline-block;
-}
-
-.moveUp:hover
-{
-	transform: translate(0, -5px);
 }
 
 /* ==========================================================================
@@ -254,22 +224,19 @@ a .fa-github:hover
 }
 
 /* Blue Wrap */
-#blue {
-	background: #53C7A1;
-	padding-top: 35px;
-	padding-bottom: 35px;
-}
-
-#blue h4 {
+#blue h1 {
 	color: white;
 	font-weight: 700;
 }
 
-#blue p {
+#blue h2 {
 	color: white;
 }
 
-
+#blue .text-right
+{
+	color: #fff;
+}
 
 /* Footer Wrap */
 #f {
@@ -286,11 +253,6 @@ a .fa-github:hover
 
 #f i:hover {
 	color: #831FCC;
-}
-
-#gotop i:hover
-{
-	color: #fff !important;
 }
 
 /****** SECTIONS *****/
@@ -330,13 +292,6 @@ a .fa-github:hover
 	padding: 5px;
 }
 
-.help-inline
-{
-	background: #FEAAAA !important;
-	font-weight: bold;
-	width: 100% !important;
-}
-
 /***** MODAL CONTACT *****/
 .modal-content {
 	border-radius: 0px;
@@ -364,7 +319,104 @@ a .fa-github:hover
 	margin-top: 0px; 
 }
 
-.modal-lg
+/*###################################################################################################################
+########################################### CUSTOM CSS ##############################################################
+###################################################################################################################*/
+/*GENERAL*/
+.btn-primary
 {
-	max-width: 900px !important;
+	background: #397e7f !important;
+}
+
+.btn-success
+{
+	background: #689D71 !important;
+}
+
+.btn-primary:hover, .btn-danger:hover, .btn-secondary:hover, .btn-success:hover
+{
+	background: #fff !important;
+	color: #397e7f !important;
+}
+
+.btn-danger
+{
+	background: #960018 !important;
+}
+
+.btn-default:hover
+{
+	background: transparent !important;
+	color: #fff !important;
+}
+
+.help-inline
+{
+	background: #FEAAAA !important;
+	font-weight: bold;
+	width: 100% !important;
+}
+
+#blue
+{
+	background: #397e7f;
+	padding-top: 35px;
+	padding-bottom: 35px;
+}
+
+/* move */
+.moveUp, .moveLeft, .moveRight
+{
+	transition: transform .3s ease-out;
+	display: inline-block;
+}
+
+.moveUp:hover
+{
+	transform: translate(0, -5px);
+}
+
+.moveLeft:hover
+{
+	transform: translate(-5px, 0);
+}
+
+.moveRight:hover
+{
+	transform: translate(5px, 0);
+}
+
+/*Pagination*/
+.pagination .active > a
+{
+	background: #397e7f !important;
+}
+
+/*HEADER*/
+
+/*FOOTER*/
+#gotop i:hover
+{
+	color: #fff !important;
+}
+
+/*Social medias links*/
+a .fa-linkedin:hover
+{
+	color: #007bb5 !important;
+}
+
+a .fa-facebook:hover
+{
+	color: #3b5998 !important;
+}
+
+a .fa-twitter:hover
+{
+	color: #55acee !important;
+}
+
+a .fa-github:hover
+{
+	color: #fff !important;
 }
