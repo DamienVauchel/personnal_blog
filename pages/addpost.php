@@ -3,8 +3,12 @@ use App\Controller;
 
 $title = $content = $author = $photo = "";
 $datas = $_POST;
-$post_controller = new Controller();
-$post_controller->addPost($datas);
+if ($datas)
+{
+    $controller = new Controller();
+    $controller->addPost($datas);
+    $tableError = array_filter($_SESSION['tableError']);
+}
 ?>
 
 <div id="blue">
@@ -25,16 +29,16 @@ $post_controller->addPost($datas);
                 <div class="form-group row">
                     <label for="title" class="col-sm-2 col-form-label">Titre du post</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="title" id="title" placeholder="Tapez le titre du post">
-                        <span class="help-inline"><?php if (isset($tableError['title'])) {echo $tableError['title'];} ?></span>
+                        <input type="text" class="form-control" name="title" id="title" placeholder="Tapez le titre du post" value="<?php if (!empty($_POST['title'])) {echo $_POST['title'];} ?>">
+                        <span class="help-inline"><?php if(isset($tableError[0]["title"])) {echo $tableError[0]["title"];} ?></span>
                     </div>
                 </div>
                 <br>
                 <div class="form-group row">
                     <label for="author" class="col-sm-2 col-form-label">Auteur</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="author" id="author" placeholder="Tapez le nom de l'Auteur">
-                        <span class="help-inline"><?php if (isset($tableError['author'])) {echo $tableError['author'];}  ?></span>
+                        <input type="text" class="form-control" name="author" id="author" placeholder="Tapez le nom de l'Auteur" value="<?php if (!empty($_POST['author'])) {echo $_POST['author'];} ?>">
+                        <span class="help-inline"><?php if (isset($tableError[1]["author"])) {echo $tableError[1]["author"];} ?></span>
                     </div>
                 </div>
                 <br>
@@ -42,16 +46,17 @@ $post_controller->addPost($datas);
                     <label for="photo" class="col-sm-2 col-form-label">Photo du post (.jpg ou .png)</label>
                     <div class="col-sm-10">
                         <input type="file" class="form-control-file" name="photo" id="photo">
-                        <span class="help-inline"><?php if (isset($tableError['photo'])) {echo $tableError['photo'];}  ?></span>
+                        <span class="help-inline"><?php if (isset($tableError[2]['photo'])) {echo $tableError[2]['photo'];}  ?></span>
                     </div>
                 </div>
                 <br>
                 <div class="form-group row">
                     <label for="content" class="col-sm-2 col-form-label">Contenu du post</label>
                     <div class="col-sm-10">
-                        <textarea name="content" class="form-control animated" placeholder="Tapez votre contenu ici" rows="10"></textarea>
+                        <textarea name="content" class="form-control animated" placeholder="Tapez votre contenu ici" rows="10"><?php if (!empty($_POST['content'])) {echo $_POST['content'];} ?></textarea>
                         <small><em>Le cadre peut être redimensionné</em></small>
-                        <span class="help-inline"><?php if (isset($tableError['content'])) {echo $tableError['content'];}  ?></span>
+                        <br>
+                        <span class="help-inline"><?php if (isset($tableError[3]['content'])) {echo $tableError[3]['content'];}  ?></span>
                     </div>
                 </div>
                 <div class="form-group row">
