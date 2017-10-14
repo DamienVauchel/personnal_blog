@@ -22,7 +22,7 @@ $paginationInfos = $post_controller->paginate();
         <?php foreach($posts as $post):
             ?>
             <a href="index.php?post&id=<?= $post->getId(); ?>">
-                <div class="row thumbnail">
+                <div class="row thumbnail moveUp">
                     <div class="col-md-6">
                         <img src="assets/post_photo/<?= $post->getPhoto(); ?>" alt="" style="max-width: 100%;">
                     </div>
@@ -48,6 +48,7 @@ $paginationInfos = $post_controller->paginate();
                 </div><!-- row -->
             </a>
             <hr>
+            <br>
         <?php endforeach; ?>
 
         <nav aria-label="Page navigation example" class="text-center">

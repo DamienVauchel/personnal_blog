@@ -340,7 +340,6 @@ a .fa-github:hover
 /***** MODAL CONTACT *****/
 .modal-content {
 	border-radius: 0px;
-
 }
 
 .modal-header {
@@ -363,4 +362,9 @@ a .fa-github:hover
 .modal-footer {
 	background: #f2f2f2;
 	margin-top: 0px; 
+}
+
+.modal-lg
+{
+	max-width: 900px !important;
 }

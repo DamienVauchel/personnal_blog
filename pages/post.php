@@ -66,10 +66,8 @@ if(!empty($_GET['id']) && isset($_POST["suppr"]))
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h5 class="modal-title" id="suppressModalLabel">Suppression de post</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                     <div class="modal-body">
                         <div>Etes-vous certain(e) de vouloir supprimer le post?</div>
