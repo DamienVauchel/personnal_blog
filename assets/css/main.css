@@ -226,7 +226,6 @@ a .fa-github:hover
 	font-weight: 700;
 }
 
-
 /* Red Wrap */
 #r {
 	background: #831FCC;
@@ -244,7 +243,6 @@ a .fa-github:hover
 }
 
 /* Blue Wrap */
-
 #blue {
 	background: #53C7A1;
 	padding-top: 35px;
@@ -280,7 +278,6 @@ a .fa-github:hover
 }
 
 /****** SECTIONS *****/
-
 .w {
 	padding-top: 35px;
 }
@@ -293,7 +290,6 @@ a .fa-github:hover
 	color: #831FCC;
 	font-size: 30px;
 }
-
 
 .wb {
 	padding-top: 35px;
@@ -316,6 +312,13 @@ a .fa-github:hover
 	color: #831FCC;
 	font-size: 12px;
 	padding: 5px;
+}
+
+.help-inline
+{
+	background: #FEAAAA !important;
+	font-weight: bold;
+	width: 100% !important;
 }
 
 /***** MODAL CONTACT *****/
