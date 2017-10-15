@@ -27,12 +27,12 @@ $posts = $controller->getHomeList();
             <br>
             <?php foreach($posts as $post):
                 ?>
-                <div class="col-lg-3">
+                <div class="col-md-3">
                     <div class="moveUp">
                         <a href="index.php?post&id=<?= $post->getId(); ?>">
                             <div class="row thumbnail">
                                 <div>
-                                    <img src="assets/post_photo/<?= $post->getPhoto(); ?>" alt="" style="max-width: 100%;">
+                                    <img class="img-responsive" src="assets/post_photo/<?= $post->getPhoto(); ?>" alt="">
                                 </div>
                                 <div>
                                     <h2 class="text-center"><b><?= strtoupper($post->getTitle()); ?></b></h2>

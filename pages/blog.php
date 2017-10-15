@@ -53,7 +53,15 @@ $paginationInfos = $post_controller->paginate();
 
         <nav aria-label="Page navigation example" class="text-center">
             <ul class="pagination justify-content-center">
-                <?php for($i = 1; $i <= $paginationInfos['pagesCount']; $i++)
+                <?php
+                if($paginationInfos['actualPage'] > 1){
+                    $previous = $paginationInfos['actualPage']-1;
+                    ?>
+                    <li class="page-item"><a class="page-link" href="index.php?blog&page=<?= $previous; ?>">Précedent</a></li>
+                    <?php
+                }
+
+                for($i = 1; $i <= $paginationInfos['pagesCount']; $i++)
                 {
                     if($i == $paginationInfos['actualPage'])
                     {
@@ -67,6 +75,12 @@ $paginationInfos = $post_controller->paginate();
                         <li class="page-item"><a class="page-link" href="index.php?blog&page=<?= $i; ?>"><?= $i; ?></a></li>
                         <?php
                     }
+                }
+                if($paginationInfos['actualPage'] >=1 && $paginationInfos['actualPage'] < $paginationInfos['pagesCount']){
+                    $next = $paginationInfos['actualPage']+1;
+                    ?>
+                    <li class="page-item"><a class="page-link" href="index.php?blog&page=<?= $next; ?>">Next</a></li>
+                    <?php
                 } ?>
             </ul>
         </nav>
