@@ -21,7 +21,6 @@ class Functions
             $tableError[] = ErrorMessage::getSubjectError($subject);
             $tableError[] = ErrorMessage::getMessageError($message);
 
-//            die(var_dump($tableError));
             if (empty(array_filter($tableError)))
             {
                 $to         = "damien.vauchel@gmail.com";
@@ -30,21 +29,22 @@ class Functions
                 $header     = $firstname." ".$name." <".$email.">";
 
                 mail($to, $subject, $body, 'From: '.$header);
+                unset($_SESSION['tableError']);
             }
             else
             {
                 return $_SESSION['tableError'] = $tableError;
             }
         }
-        elseif(isset($_POST['sendmsgModal']))
-        {
-            $to         = "damien.vauchel@gmail.com";
-            $subject    = wordwrap($_POST['subjectModal'], 70);
-            $body       = $_POST['messageModal'];
-            $header     = $_POST['prenomModal']." ".$_POST['nomModal']." <".$_POST['emailModal'].">";
-
-            mail($to, $subject, $body, 'From: '.$header);
-        }
+//        elseif(isset($_POST['sendmsgModal']))
+//        {
+//            $to         = "damien.vauchel@gmail.com";
+//            $subject    = wordwrap($_POST['subjectModal'], 70);
+//            $body       = $_POST['messageModal'];
+//            $header     = $_POST['prenomModal']." ".$_POST['nomModal']." <".$_POST['emailModal'].">";
+//
+//            mail($to, $subject, $body, 'From: '.$header);
+//        }
     }
 
     // CHECK INPUT

@@ -10,14 +10,17 @@ if ($datas)
     $controller = new Controller();
     $tableError = array_filter($_SESSION['tableError']);
 }
+else
+{
+    unset($tableError);
+}
 
 if ($datas && empty($tableError))
 {
     unset($_POST);
     unset($tableError);
-//    die(var_dump($tableError));
 }
-elseif($datas && !empty($tableError) || isset($_GET['contact']))
+elseif($datas && !empty($tableError))
 {
     ?>
     <script>
@@ -26,6 +29,16 @@ elseif($datas && !empty($tableError) || isset($_GET['contact']))
         });
     </script>
 <?php
+}
+elseif(isset($_GET['contact']))
+{
+    ?>
+    <script>
+        $(window).load(function() {
+            $("html, body").animate({ scrollTop: $("#contact").offset().top-50 }, 500);
+        });
+    </script>
+    <?php
 }
 
 $controller = new Controller();
