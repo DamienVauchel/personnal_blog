@@ -18,7 +18,7 @@
 /* OVERALL ASPECT */
 
 body {
-    background-color: #eee;
+    background-color: #edf5f5;
     font-family: "Lato";
     font-weight: 300;
     font-size: 16px;
@@ -323,6 +323,7 @@ a:after {
 ########################################### CUSTOM CSS ##############################################################
 ###################################################################################################################*/
 /*GENERAL*/
+/*Buttons*/
 .btn-primary
 {
 	background: #397e7f !important;
@@ -350,6 +351,7 @@ a:after {
 	color: #fff !important;
 }
 
+/*ErrorMessages*/
 .help-inline
 {
 	background: #FEAAAA !important;
@@ -357,6 +359,7 @@ a:after {
 	width: 100% !important;
 }
 
+/*Blue Titles*/
 #blue
 {
 	background: #397e7f;
@@ -384,6 +387,37 @@ a:after {
 .moveRight:hover
 {
 	transform: translate(5px, 0);
+}
+
+/*Modals*/
+#myModal .modal-header
+{
+	background: #397e7f !important;
+}
+
+#myModal .modal-header h2, #myModal .modal-header button
+{
+	color: #fff !important;
+}
+
+#suppressModal .modal-header
+{
+	background: #960018 !important;
+}
+
+#suppressModal .modal-header h5, #suppressModal .modal-header button
+{
+	color: #fff !important;
+}
+
+.modal-footer
+{
+	background: #222 !important;
+}
+
+.modal-body
+{
+	background: #edf5f5 !important;
 }
 
 /*Pagination*/
