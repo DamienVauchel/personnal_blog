@@ -3,6 +3,31 @@ use App\Functions;
 use App\Controller;
 
 Functions::contact();
+$datas = $_POST;
+
+if ($datas)
+{
+    $controller = new Controller();
+    $tableError = array_filter($_SESSION['tableError']);
+}
+
+if ($datas && empty($tableError))
+{
+    unset($_POST);
+    unset($tableError);
+//    die(var_dump($tableError));
+}
+elseif($datas && !empty($tableError) || isset($_GET['contact']))
+{
+    ?>
+    <script>
+        $(window).load(function() {
+            $("html, body").animate({ scrollTop: $("#contact").offset().top-50 }, 500);
+        });
+    </script>
+<?php
+}
+
 $controller = new Controller();
 $posts = $controller->getHomeList();
 ?>
@@ -130,39 +155,44 @@ $posts = $controller->getHomeList();
         <div class="form-group row">
             <label for="nom" class="col-sm-2 col-form-label">Nom</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="nom" id="nom" placeholder="Tapez votre Nom">
+                <input type="text" class="form-control" name="nom" id="nom" placeholder="Tapez votre Nom" value="<?php if (!empty($_POST['nom'])) {echo $_POST['nom'];} ?>">
+                <?php if(isset($tableError[0]["name"])) {echo "<span class='help-inline col-sm-12'>".$tableError[0]['name']."</span>";} ?>
             </div>
         </div>
         <br>
         <div class="form-group row">
             <label for="prenom" class="col-sm-2 col-form-label">Prénom</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="prenom" id="prenom" placeholder="Tapez votre Prénom">
+                <input type="text" class="form-control" name="prenom" id="prenom" placeholder="Tapez votre Prénom" value="<?php if (!empty($_POST['prenom'])) {echo $_POST['prenom'];} ?>">
+                <?php if(isset($tableError[1]["firstname"])) {echo "<span class='help-inline col-sm-12'>".$tableError[1]["firstname"]."</span>";} ?>
             </div>
         </div>
         <br>
         <div class="form-group row">
             <label for="email" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Tapez votre mail">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Tapez votre mail" value="<?php if (!empty($_POST['email'])) {echo $_POST['email'];} ?>">
+                <?php if(isset($tableError[2]["email"])) {echo "<span class='help-inline col-sm-12'>".$tableError[2]["email"]."</span>";} ?>
             </div>
         </div>
         <br>
         <div class="form-group row">
             <label for="subject" class="col-sm-2 col-form-label">Sujet</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Objet du message">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Objet du message" value="<?php if (!empty($_POST['subject'])) {echo $_POST['subject'];} ?>">
+                <?php if(isset($tableError[3]["subject"])) {echo "<span class='help-inline col-sm-12'>".$tableError[3]["subject"]."</span>";} ?>
             </div>
         </div>
         <div class="form-group row">
             <label for="message" class="col-sm-2 col-form-label">Votre message</label>
             <div class="col-sm-10">
-                <textarea name="message" class="form-control animated" placeholder="Tapez votre message ici" rows="10"></textarea>
+                <textarea name="message" class="form-control animated" placeholder="Tapez votre message ici" rows="10"><?php if (!empty($_POST['message'])) {echo $_POST['message'];} ?></textarea>
                 <small><em>Le cadre peut être redimensionné</em></small>
+                <?php if(isset($tableError[4]["message"])) {echo "<span class='help-inline col-sm-12'>".$tableError[4]["message"]."</span>";} ?>
             </div>
         </div>
         <div class="form-group row">
-            <input type="submit" name="sendmsg" class="btn btn-default btn-lg pull-right" value="Envoyer le message">
+            <input type="submit" name="sendmsg" class="btn btn-default btn-lg pull-right" id="btn-sendmsg" value="Envoyer le message">
         </div>
     </form>
 </div>

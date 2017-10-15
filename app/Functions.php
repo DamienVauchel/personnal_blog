@@ -5,14 +5,36 @@ class Functions
     // CONTACT FORM WORKING
     public static function contact()
     {
+        $tableError = [];
+
         if(isset($_POST['sendmsg']))
         {
-            $to         = "damien.vauchel@gmail.com";
-            $subject    = wordwrap($_POST['subject'], 70);
-            $body       = $_POST['message'];
-            $header     = $_POST['prenom']." ".$_POST['nom']." <".$_POST['email'].">";
+            $name = $_POST['nom'];
+            $firstname = $_POST['prenom'];
+            $email = $_POST['email'];
+            $subject = $_POST['subject'];
+            $message = $_POST['message'];
 
-            mail($to, $subject, $body, 'From: '.$header);
+            $tableError[] = ErrorMessage::getNameError($name);
+            $tableError[] = ErrorMessage::getFirstnameError($firstname);
+            $tableError[] = ErrorMessage::getEmailError($email);
+            $tableError[] = ErrorMessage::getSubjectError($subject);
+            $tableError[] = ErrorMessage::getMessageError($message);
+
+//            die(var_dump($tableError));
+            if (empty(array_filter($tableError)))
+            {
+                $to         = "damien.vauchel@gmail.com";
+                $subject    = wordwrap($subject, 70);
+                $body       = $message;
+                $header     = $firstname." ".$name." <".$email.">";
+
+                mail($to, $subject, $body, 'From: '.$header);
+            }
+            else
+            {
+                return $_SESSION['tableError'] = $tableError;
+            }
         }
         elseif(isset($_POST['sendmsgModal']))
         {

@@ -340,6 +340,18 @@ a:after {
 	color: #397e7f !important;
 }
 
+#btn-sendmsg
+{
+	color: #fff !important;
+	background: #000 !important;
+}
+
+#btn-sendmsg:hover
+{
+	background: transparent !important;
+	color: #000 !important;
+}
+
 .btn-danger
 {
 	background: #960018 !important;

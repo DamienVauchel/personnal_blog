@@ -30,6 +30,10 @@ elseif(isset($_GET['update']))
 {
     $post_controller->getUpdatePost();
 }
+elseif(isset($_GET['contact']))
+{
+    $post_controller->home();
+}
 $content = ob_get_clean();
 
 require 'pages/templates/default.php';

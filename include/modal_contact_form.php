@@ -10,7 +10,11 @@
             <div class="modal-body">
                 <div class="row centered">
                     <!--                   CONTACT                                                                   -->
-                    <form class="form" action="../index.php" method="post" autocomplete="off">
+                    <?php
+                        $path = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+                        $current = basename ($path);
+                    ?>
+                    <form class="form" action="../<?= $current; ?>" method="post" autocomplete="off">
                         <div class="form-group row">
                             <label for="nom" class="col-sm-2 col-form-label">Nom</label>
                             <div class="col-sm-10">
