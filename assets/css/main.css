@@ -323,6 +323,11 @@ a:after {
 ########################################### CUSTOM CSS ##############################################################
 ###################################################################################################################*/
 /*GENERAL*/
+.fa-cog
+{
+	font-size: 100% !important;
+}
+
 /*Buttons*/
 .btn-primary
 {
@@ -438,6 +443,12 @@ a:after {
 	background: #397e7f !important;
 }
 
+/* Home Posts */
+.moveUp
+{
+	height: 100% !important;
+}
+
 /*HEADER*/
 
 /*FOOTER*/
@@ -465,4 +476,43 @@ a .fa-twitter:hover
 a .fa-github:hover
 {
 	color: #fff !important;
+}
+
+/*#########################################################################################################
+########################### TABLETS AND SMARTPHONES #######################################################
+#########################################################################################################*/
+@media screen and (max-width: 768px)
+{
+	/* Général */
+	h1, h2
+	{
+		font-size: 1.6em !important;
+	}
+
+	.home-post-title
+	{
+		font-size: 1.1em !important;
+	}
+
+	.contact-title
+	{
+		font-size: 0.9em !important;
+	}
+
+	.text-right div, .post-content, .return, .form-control-file
+	{
+		font-size: 0.8em !important;
+	}
+
+	.home-post
+	{
+		margin: auto !important;
+		margin-bottom: 10px !important;
+		width: 100% !important;
+	}
+
+	footer .fa
+	{
+		font-size: 100% !important;
+	}
 }

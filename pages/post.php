@@ -44,11 +44,11 @@ if(!empty($_GET['id']) && isset($_POST["suppr"]))
 </div><!--  bluewrap -->
 
 <div class="container desc">
-    <div class="row thumbnail">
+    <div class="row thumbnail home-post">
         <br>
         <div class="text-left col-md-6" ><a href="index.php?update&id=<?= $post->getId(); ?>" class="btn btn-primary">Modifier l'article</a></div>
         <div class="text-right col-md-6">
-            <a href="index.php?blog"><p><i class="fa fa-hand-o-right" aria-hidden="true"></i> Retourner à la liste des articles</p></a>
+            <a href="index.php?blog" class="return"><p><i class="fa fa-hand-o-right" aria-hidden="true"></i> Retourner à la liste des articles</p></a>
         </div>
         <br>
         <br>
@@ -57,7 +57,7 @@ if(!empty($_GET['id']) && isset($_POST["suppr"]))
         </div>
         <br>
         <div class="col-xs-12">
-            <p><?= $post->getContent(); ?></p>
+            <p class="post-content"><?= $post->getContent(); ?></p>
         </div>
         <br>
         <div class="text-right"><a class="btn btn-danger" data-toggle="modal" data-target="#suppressModal">Supprimer l'article</a></div>

@@ -68,12 +68,12 @@ $posts = $controller->getHomeList();
                 <div class="col-md-3">
                     <div class="moveUp">
                         <a href="index.php?post&id=<?= $post->getId(); ?>">
-                            <div class="row thumbnail">
+                            <div class="row thumbnail home-post">
                                 <div>
                                     <img class="img-responsive" src="assets/post_photo/<?= $post->getPhoto(); ?>" alt="">
                                 </div>
                                 <div>
-                                    <h2 class="text-center"><b><?= strtoupper($post->getTitle()); ?></b></h2>
+                                    <h2 class="text-center home-post-title"><b><?= strtoupper($post->getTitle()); ?></b></h2>
                                     <div class="text-right">
                                         <small style="text-decoration: underline;">
                                             <i class="fa fa-clock-o" aria-hidden="true"></i><?php if($post->getUpdateDate() != null)
@@ -161,8 +161,8 @@ $posts = $controller->getHomeList();
 <div class="container tab-pane" id="contact">
     <br>
     <h2 class="text-center"><b>Pour me contacter</b></h2>
-    <h4 class="text-center">Pour les questions d'ordre général, vous pouvez utiliser le formulaire ci-joint.</h4>
-    <h4 class="text-center">Je vous répondrez dès que possible.</h4>
+    <h4 class="text-center contact-title">Pour les questions d'ordre général, vous pouvez utiliser le formulaire ci-joint.</h4>
+    <h4 class="text-center contact-title">Je vous répondrez dès que possible.</h4>
     <br>
     <form class="form" action="index.php?home" method="post" autocomplete="off">
         <div class="form-group row">

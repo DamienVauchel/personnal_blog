@@ -55,7 +55,7 @@
                 <li><a href="index.php">ACCUEIL</a></li>
                 <li><a href="index.php?blog">BLOG</a></li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">ADMIN <span class="caret"></span></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i> ADMIN <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="index.php?addpost">AJOUTER UN POST</a></li>
                     </ul>
@@ -69,7 +69,7 @@
 <div id="header"></div>
 <?= $content; ?>
 <!-- FOOTER -->
-<div id="f">
+<footer id="f">
     <div class="container">
         <div class="row centered">
             <div class="col-md-1"></div>
@@ -83,7 +83,7 @@
             <div class="col-md-1"><a href="#header" id="gotop"><i class="fa fa-angle-up" aria-hidden="true"></i></a></div>
         </div><!-- row -->
     </div><!-- container -->
-</div><!-- Footer -->
+</footer><!-- Footer -->
 
 <?php //require "include/modal_contact_form.php"; ?>
 
