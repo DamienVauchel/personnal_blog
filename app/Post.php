@@ -11,7 +11,6 @@ class Post
     protected $creation_date;
     protected $update_date;
     protected $photo;
-    protected $category_id;
 
     // CONSTRUCT
     public function __construct($datas)
@@ -72,11 +71,6 @@ class Post
         return $this->photo;
     }
 
-    public function getCategoryId()
-    {
-        return $this->category_id;
-    }
-
     // SETTERS
     public function setAuthor($author)
     {
@@ -117,11 +111,4 @@ class Post
     {
         $this->photo = $photo;
     }
-
-    public function setCategoryId($category_id)
-    {
-        $this->category_id = $category_id;
-    }
-
-    // METHODS
 }

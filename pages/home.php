@@ -59,31 +59,25 @@ $posts = $controller->getHomeList();
 </div><!-- headerwrap -->
 
 <div id="dg">
-    <div class="container">
-        <div class="row centered">
+    <div class="container" id="home-container">
+        <div class="row centered" id="home-row">
             <h4>DERNIERS ARTICLES DU BLOG</h4>
             <br>
             <?php foreach($posts as $post):
                 ?>
-                <div class="col-md-3">
+                <div class="col-sm-3">
                     <div class="moveUp">
                         <a href="index.php?post&id=<?= $post->getId(); ?>">
-                            <div class="row thumbnail home-post">
+                            <div class="thumbnail home-post home-post-mobile">
                                 <div>
-                                    <img class="img-responsive" src="assets/post_photo/<?= $post->getPhoto(); ?>" alt="">
+                                    <img class="img-responsive center-block" src="assets/post_photo/<?= $post->getPhoto(); ?>" alt="">
                                 </div>
+                                <br>
                                 <div>
                                     <h2 class="text-center home-post-title"><b><?= strtoupper($post->getTitle()); ?></b></h2>
                                     <div class="text-right">
                                         <small style="text-decoration: underline;">
-                                            <i class="fa fa-clock-o" aria-hidden="true"></i><?php if($post->getUpdateDate() != null)
-                                            {
-                                                echo $post->getUpdateDate();
-                                            }
-                                            else
-                                            {
-                                                echo $post->getCreationDate();
-                                            }?>
+                                            <i class="fa fa-clock-o" aria-hidden="true"></i><?= $post->getUpdateDate(); ?>
                                         </small>
                                     </div>
                                     <p class="text-right">... Lire l'article</p>

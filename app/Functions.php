@@ -36,15 +36,6 @@ class Functions
                 return $_SESSION['tableError'] = $tableError;
             }
         }
-//        elseif(isset($_POST['sendmsgModal']))
-//        {
-//            $to         = "damien.vauchel@gmail.com";
-//            $subject    = wordwrap($_POST['subjectModal'], 70);
-//            $body       = $_POST['messageModal'];
-//            $header     = $_POST['prenomModal']." ".$_POST['nomModal']." <".$_POST['emailModal'].">";
-//
-//            mail($to, $subject, $body, 'From: '.$header);
-//        }
     }
 
     // CHECK INPUT

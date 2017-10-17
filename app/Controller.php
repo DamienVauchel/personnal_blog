@@ -14,6 +14,7 @@ class Controller
     }
 
     // METHODS
+        // Get a page
     public function home() // To go to home page
     {
         include "pages/home.php";
@@ -29,6 +30,7 @@ class Controller
         include "pages/updatepost.php";
     }
 
+        // Actions
     public function addPost($datas) // To add a post from the addpost.php form
     {
         $tableError = [];

@@ -22,22 +22,15 @@ $paginationInfos = $post_controller->paginate();
         <?php foreach($posts as $post):
             ?>
             <a href="index.php?post&id=<?= $post->getId(); ?>">
-                <div class="row thumbnail moveUp home-post">
+                <div class="row thumbnail moveUp home-post-mobile">
                     <div class="col-md-6">
-                        <img src="assets/post_photo/<?= $post->getPhoto(); ?>" alt="" style="max-width: 100%;">
+                        <img class="center-block img-responsive" src="assets/post_photo/<?= $post->getPhoto(); ?>" alt="" style="max-width: 100%;">
                     </div>
                     <div class="col-md-6">
                         <h2 class="text-center home-post-title"><b><?= strtoupper($post->getTitle()); ?></b></h2>
                         <div class="text-right">
                             <small style="text-decoration: underline;">
-                                <i class="fa fa-clock-o" aria-hidden="true"></i> Date de dernière mise à jour: <?php if($post->getUpdateDate() != null)
-                                {
-                                    echo $post->getUpdateDate();
-                                }
-                                else
-                                {
-                                    echo $post->getCreationDate();
-                                }?>
+                                <i class="fa fa-clock-o" aria-hidden="true"></i> Date de dernière mise à jour: <?= $post->getUpdateDate(); ?>
                             </small>
                         </div>
                         <p>
@@ -51,7 +44,8 @@ $paginationInfos = $post_controller->paginate();
             <br>
         <?php endforeach; ?>
 
-        <nav aria-label="Page navigation example" class="text-center">
+<!--        PAGINATION          -->
+        <nav aria-label="Page navigation" class="text-center">
             <ul class="pagination justify-content-center">
                 <?php
                 if($paginationInfos['actualPage'] > 1){
@@ -83,6 +77,6 @@ $paginationInfos = $post_controller->paginate();
                     <?php
                 } ?>
             </ul>
-        </nav>
+        </nav> <!-- END PAGINATION -->
     </div>
 </div>

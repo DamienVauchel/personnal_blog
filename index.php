@@ -7,6 +7,7 @@ define("APP_ROOT", __DIR__);
 require "app/Autoloader.php";
 Autoloader::register();
 //echo APP_ROOT;
+
 $post_controller = new Controller();
 
 ob_start();

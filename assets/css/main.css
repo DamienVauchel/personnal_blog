@@ -207,22 +207,6 @@ a:after {
 	font-weight: 700;
 }
 
-/* Red Wrap */
-#r {
-	background: #831FCC;
-	padding-top: 35px;
-	padding-bottom: 35px;
-}
-
-#r h4 {
-	color: white;
-	font-weight: 700;
-}
-
-#r p {
-	color: white;
-}
-
 /* Blue Wrap */
 #blue h1 {
 	color: white;
@@ -265,7 +249,7 @@ a:after {
 }
 
 .w i {
-	color: #831FCC;
+	color: #222;
 	font-size: 30px;
 }
 
@@ -323,11 +307,6 @@ a:after {
 ########################################### CUSTOM CSS ##############################################################
 ###################################################################################################################*/
 /*GENERAL*/
-.fa-cog
-{
-	font-size: 100% !important;
-}
-
 /*Buttons*/
 .btn-primary
 {
@@ -407,16 +386,6 @@ a:after {
 }
 
 /*Modals*/
-#myModal .modal-header
-{
-	background: #397e7f !important;
-}
-
-#myModal .modal-header h2, #myModal .modal-header button
-{
-	color: #fff !important;
-}
-
 #suppressModal .modal-header
 {
 	background: #960018 !important;
@@ -443,13 +412,16 @@ a:after {
 	background: #397e7f !important;
 }
 
-/* Home Posts */
-.moveUp
+.home-post-title
 {
-	height: 100% !important;
+	font-size: 1em !important;
 }
 
 /*HEADER*/
+.fa-cog
+{
+	font-size: 100% !important;
+}
 
 /*FOOTER*/
 #gotop i:hover
@@ -504,7 +476,7 @@ a .fa-github:hover
 		font-size: 0.8em !important;
 	}
 
-	.home-post
+	.home-post-mobile
 	{
 		margin: auto !important;
 		margin-bottom: 10px !important;

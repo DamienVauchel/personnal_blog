@@ -1,7 +1,6 @@
 <?php
 use App\Controller;
 
-$title = $content = $author = $photo = "";
 $datas = $_POST;
 if ($datas)
 {

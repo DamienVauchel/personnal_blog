@@ -1,5 +1,3 @@
-<?php use App\Functions; ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -36,7 +34,7 @@
 <body>
 
 <!-- Fixed navbar -->
-<div class="navbar navbar-inverse navbar-fixed-top">
+<header class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -48,10 +46,6 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <?php
-                //                $path = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-                //                $current = basename ($path);
-                ?>
                 <li><a href="index.php">ACCUEIL</a></li>
                 <li><a href="index.php?blog">BLOG</a></li>
                 <li class="dropdown">
@@ -60,14 +54,15 @@
                         <li><a href="index.php?addpost">AJOUTER UN POST</a></li>
                     </ul>
                 </li>
-<!--                <li><a data-toggle="modal" data-target="#myModal" href="#myModal"><i class="fa fa-envelope-o"></i></a></li>-->
                 <li><a href="index.php?contact"><i class="fa fa-envelope-o"></i></a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
-</div>
+</header>
 <div id="header"></div>
+
 <?= $content; ?>
+
 <!-- FOOTER -->
 <footer id="f">
     <div class="container">
@@ -84,8 +79,6 @@
         </div><!-- row -->
     </div><!-- container -->
 </footer><!-- Footer -->
-
-<?php //require "include/modal_contact_form.php"; ?>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
