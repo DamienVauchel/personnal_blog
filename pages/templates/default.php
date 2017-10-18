@@ -1,5 +1,3 @@
-<?php use App\Functions; ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -23,6 +21,9 @@
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -33,7 +34,7 @@
 <body>
 
 <!-- Fixed navbar -->
-<div class="navbar navbar-inverse navbar-fixed-top">
+<header class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -45,48 +46,43 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <?php
-                //                $path = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-                //                $current = basename ($path);
-                ?>
                 <li><a href="index.php">ACCUEIL</a></li>
                 <li><a href="index.php?blog">BLOG</a></li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">ADMIN <span class="caret"></span></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i> ADMIN <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="index.php?addpost">AJOUTER UN POST</a></li>
                     </ul>
                 </li>
-                <li><a data-toggle="modal" data-target="#myModal" href="#myModal"><i class="fa fa-envelope-o"></i></a></li>
+                <li><a href="index.php?contact"><i class="fa fa-envelope-o"></i></a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
-</div>
+</header>
 <div id="header"></div>
+
 <?= $content; ?>
+
 <!-- FOOTER -->
-<div id="f">
+<footer id="f">
     <div class="container">
         <div class="row centered">
             <div class="col-md-1"></div>
             <div class="col-md-10">
                 <a href="http://www.damienvauchel.com" target="_blank"><i class="fa fa-user" aria-hidden="true"></i></a>
-                <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
-                <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                <a href="#" target="_blank"><i class="fa fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/damien-vauchel/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                <a href="https://twitter.com/Scooby_Dam" target="_blank"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.facebook.com/sammyscoobydoo" target="_blank"><i class="fa fa-facebook"></i></a>
+                <a href="https://github.com/DamienVauchel" target="_blank"><i class="fa fa-github"></i></a>
             </div>
             <div class="col-md-1"><a href="#header" id="gotop"><i class="fa fa-angle-up" aria-hidden="true"></i></a></div>
         </div><!-- row -->
     </div><!-- container -->
-</div><!-- Footer -->
-
-<?php require "include/modal_contact_form.php"; ?>
+</footer><!-- Footer -->
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script>
     $(function ()

@@ -11,7 +11,6 @@ if(!empty($_GET['id']))
 $db = Database::connect();
 $post_manager = new Manager($db);
 $post = $post_manager->getPost($id);
-Database::disconnect();
 
 $datas = $_POST;
 if ($datas)

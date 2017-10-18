@@ -207,22 +207,6 @@ a:after {
 	font-weight: 700;
 }
 
-/* Red Wrap */
-#r {
-	background: #831FCC;
-	padding-top: 35px;
-	padding-bottom: 35px;
-}
-
-#r h4 {
-	color: white;
-	font-weight: 700;
-}
-
-#r p {
-	color: white;
-}
-
 /* Blue Wrap */
 #blue h1 {
 	color: white;
@@ -265,7 +249,7 @@ a:after {
 }
 
 .w i {
-	color: #831FCC;
+	color: #222;
 	font-size: 30px;
 }
 
@@ -340,6 +324,18 @@ a:after {
 	color: #397e7f !important;
 }
 
+#btn-sendmsg
+{
+	color: #fff !important;
+	background: #000 !important;
+}
+
+#btn-sendmsg:hover
+{
+	background: transparent !important;
+	color: #000 !important;
+}
+
 .btn-danger
 {
 	background: #960018 !important;
@@ -390,16 +386,6 @@ a:after {
 }
 
 /*Modals*/
-#myModal .modal-header
-{
-	background: #397e7f !important;
-}
-
-#myModal .modal-header h2, #myModal .modal-header button
-{
-	color: #fff !important;
-}
-
 #suppressModal .modal-header
 {
 	background: #960018 !important;
@@ -426,7 +412,16 @@ a:after {
 	background: #397e7f !important;
 }
 
+.home-post-title
+{
+	font-size: 1em !important;
+}
+
 /*HEADER*/
+.fa-cog
+{
+	font-size: 100% !important;
+}
 
 /*FOOTER*/
 #gotop i:hover
@@ -453,4 +448,43 @@ a .fa-twitter:hover
 a .fa-github:hover
 {
 	color: #fff !important;
+}
+
+/*#########################################################################################################
+########################### TABLETS AND SMARTPHONES #######################################################
+#########################################################################################################*/
+@media screen and (max-width: 768px)
+{
+	/* Général */
+	h1, h2
+	{
+		font-size: 1.6em !important;
+	}
+
+	.home-post-title
+	{
+		font-size: 1.1em !important;
+	}
+
+	.contact-title
+	{
+		font-size: 0.9em !important;
+	}
+
+	.text-right div, .post-content, .return, .form-control-file
+	{
+		font-size: 0.8em !important;
+	}
+
+	.home-post-mobile
+	{
+		margin: auto !important;
+		margin-bottom: 10px !important;
+		width: 100% !important;
+	}
+
+	footer .fa
+	{
+		font-size: 100% !important;
+	}
 }

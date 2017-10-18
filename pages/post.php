@@ -1,13 +1,3 @@
-<?php
-use App\Controller;
-
-if(!empty($_GET['id']) && isset($_POST["suppr"]))
-{
-    $post_controller = new Controller();
-    $post_controller->supprPost();
-}
-?>
-
 <div id="blue">
     <div class="container">
         <div class="row centered">
@@ -16,7 +6,7 @@ if(!empty($_GET['id']) && isset($_POST["suppr"]))
                 <div class="text-right">
                     <div><b>
                             <?php
-                            if($post->getUpdateDate() != null)
+                            if($post->getUpdateDate() != $post->getCreationDate())
                             {
                                 echo "Mis à jour";
                             }
@@ -25,17 +15,7 @@ if(!empty($_GET['id']) && isset($_POST["suppr"]))
                                 echo "Ecrit";
                             }
                             ?> par: <?= $post->getAuthor(); ?></b>
-                        <div style="text-decoration: underline; font-weight: bold;"><i class="fa fa-clock-o" aria-hidden="true"></i> Date de la dernière mise à jour: <?php
-                                                                                                                            if($post->getUpdateDate() != null)
-                                                                                                                            {
-                                                                                                                                echo $post->getUpdateDate();
-                                                                                                                            }
-                                                                                                                            else
-                                                                                                                            {
-                                                                                                                                echo $post->getCreationDate();
-                                                                                                                            }
-                                                                                                                            ?>
-                        </div>
+                        <div style="text-decoration: underline; font-weight: bold;"><i class="fa fa-clock-o" aria-hidden="true"></i> Date de la dernière mise à jour: <?= $post->getUpdateDate(); ?></div>
                     </div>
                 </div>
             </div>
@@ -44,20 +24,20 @@ if(!empty($_GET['id']) && isset($_POST["suppr"]))
 </div><!--  bluewrap -->
 
 <div class="container desc">
-    <div class="row thumbnail">
+    <div class="row thumbnail home-post-mobile">
         <br>
         <div class="text-left col-md-6" ><a href="index.php?update&id=<?= $post->getId(); ?>" class="btn btn-primary">Modifier l'article</a></div>
         <div class="text-right col-md-6">
-            <a href="index.php?blog"><p><i class="fa fa-hand-o-right" aria-hidden="true"></i> Retourner à la liste des articles</p></a>
+            <a href="index.php?blog" class="return"><p><i class="fa fa-hand-o-right" aria-hidden="true"></i> Retourner à la liste des articles</p></a>
         </div>
         <br>
         <br>
         <div class="col-xs-12">
-            <img src="assets/post_photo/<?= $post->getPhoto(); ?>" alt="" style="width: 100%;">
+            <img class="center-block img-responsive" src="assets/post_photo/<?= $post->getPhoto(); ?>" alt="">
         </div>
         <br>
         <div class="col-xs-12">
-            <p><?= $post->getContent(); ?></p>
+            <p class="post-content"><?= $post->getContent(); ?></p>
         </div>
         <br>
         <div class="text-right"><a class="btn btn-danger" data-toggle="modal" data-target="#suppressModal">Supprimer l'article</a></div>

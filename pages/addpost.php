@@ -1,12 +1,6 @@
 <?php
-use App\Controller;
-
-$title = $content = $author = $photo = "";
-$datas = $_POST;
-if ($datas)
+if ($_POST)
 {
-    $controller = new Controller();
-    $controller->addPost($datas);
     $tableError = array_filter($_SESSION['tableError']);
 }
 ?>

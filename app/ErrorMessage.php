@@ -31,6 +31,51 @@ class ErrorMessage
         }
     }
 
+    public static function getNameError($name) // Return nameError in tableError if no name
+    {
+        if(empty($name))
+        {
+            $nameError = "Ce champ ne peut pas être vide";
+            return $tableError[] = ["name" => $nameError];
+        }
+    }
+
+    public static function getFirstNameError($firstname) // Return firstnameError in tableError if no firstname
+    {
+        if(empty($firstname))
+        {
+            $firstnameError = "Ce champ ne peut pas être vide";
+            return $tableError[] = ["firstname" => $firstnameError];
+        }
+    }
+
+    public static function getEmailError($email) // Return emailError in tableError if no email
+    {
+        if(empty($email))
+        {
+            $emailError = "Ce champ ne peut pas être vide";
+            return $tableError[] = ["email" => $emailError];
+        }
+    }
+
+    public static function getSubjectError($subject) // Return subjectError in tableError if no subject
+    {
+        if(empty($subject))
+        {
+            $subjectError = "Ce champ ne peut pas être vide";
+            return $tableError[] = ["subject" => $subjectError];
+        }
+    }
+
+    public static function getMessageError($message) // Return messageError in tableError if no message
+    {
+        if(empty($message))
+        {
+            $messageError = "Ce champ ne peut pas être vide";
+            return $tableError[] = ["message" => $messageError];
+        }
+    }
+
     public static function getPhotoError($photo, $photoExtension, $photoPath) // Return photoError in tableError if no photo
     {
         if(empty($photo))
