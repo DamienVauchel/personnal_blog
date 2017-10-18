@@ -14,9 +14,7 @@ if ($_POST)
         </div><!-- row -->
     </div><!-- container -->
 </div><!-- blue wrap -->
-<?php
-//var_dump($tableError);
-?>
+
 <div class="container w">
     <div class="container" id="addpost">
         <form class="form" method="post" action="index.php?addpost" enctype="multipart/form-data">
