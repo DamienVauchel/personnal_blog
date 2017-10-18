@@ -55,7 +55,7 @@ if ($datas)
                     <div class="col-sm-10">
                         <img src="assets/post_photo/<?= $post->getPhoto(); ?>" alt="" style="width: 100%;">
                         <input type="file" class="form-control-file" name="photo" id="photo">
-                        <?php if (isset($tableError[2]['photo'])) {echo "<span class='help-inline col-sm-12'>".$tableError[2]['photo']."</span>";} ?>
+                        <?php if (isset($tableError[3]['photo'])) {echo "<span class='help-inline col-sm-12'>".$tableError[3]['photo']."</span>";} ?>
                     </div>
                 </div>
                 <br>
@@ -63,7 +63,7 @@ if ($datas)
                     <label for="content" class="col-sm-2 col-form-label">Contenu du post</label>
                     <div class="col-sm-10">
                         <textarea class="form-control animated" rows="10" name="content"><?= $post->getContent(); ?></textarea>
-                        <?php if (isset($tableError[3]['content'])) {echo "<span class='help-inline col-sm-12'>".$tableError[3]['content']."</span>";} ?>
+                        <?php if (isset($tableError[2]['content'])) {echo "<span class='help-inline col-sm-12'>".$tableError[2]['content']."</span>";} ?>
                         <small><em>Le cadre peut être redimensionné</em></small>
                     </div>
                 </div>

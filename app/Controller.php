@@ -104,7 +104,7 @@ class Controller
 
                 if(file_exists($photoPath))
                 {
-                    $photoError = "Le fichier existe déjà";
+                    $photoError = "Un fichier de ce nom existe déjà. Renommez-le ou chargez un autre fichier";
                     $tableError[] = ["photo" => $photoError];
                 }
 
@@ -128,6 +128,10 @@ class Controller
             {
                 if($isPhotoUpdated)
                 {
+                    $post = $this->post_manager->getPost($id);
+                    $actualPhoto = $post->getPhoto();
+                    unlink("assets/post_photo/".$actualPhoto); // Delete actual photo file from the server
+
                     $this->post_manager->updatePostWithPhoto($title, $content, $author, $photo, $id);
                     header("Location: index.php?post&id=".$id);
                 }
@@ -169,7 +173,11 @@ class Controller
 
         if(isset($_POST["suppr"]))
         {
-            $this->post_manager->delete($_GET['id']);
+            $post = $this->post_manager->getPost($id);
+            $photo = $post->getPhoto();
+            unlink("assets/post_photo/".$photo); // Delete photo file from the server
+
+            $this->post_manager->delete($id);
 
             Database::disconnect();
             header("Location: index.php?blog");

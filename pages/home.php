@@ -27,12 +27,12 @@ $posts = $controller->getHomeList();
             <br>
             <?php foreach($posts as $post):
                 ?>
-                <div class="col-lg-3">
+                <div class="col-md-3">
                     <div class="moveUp">
                         <a href="index.php?post&id=<?= $post->getId(); ?>">
                             <div class="row thumbnail">
                                 <div>
-                                    <img src="assets/post_photo/<?= $post->getPhoto(); ?>" alt="" style="max-width: 100%;">
+                                    <img class="img-responsive" src="assets/post_photo/<?= $post->getPhoto(); ?>" alt="">
                                 </div>
                                 <div>
                                     <h2 class="text-center"><b><?= strtoupper($post->getTitle()); ?></b></h2>
@@ -98,19 +98,19 @@ $posts = $controller->getHomeList();
             <h4>DERNIERES REALISATIONS</h4>
             <br>
             <div class="col-lg-4">
-                <div class="tilt">
+                <div class="moveLeft">
                 <a href="http://chaletsdeluxe.damienvauchel.com/" target="_blank"><img src="assets/img/p01.png" height="200"></a>
                 </div>
             </div>
 
             <div class="col-lg-4">
-                <div class="tilt">
+                <div class="moveRight">
                 <a href="http://www.travel-agency.damienvauchel.com/" target="_blank"><img src="assets/img/p03.png" height="200"></a>
                 </div>
             </div>
 
             <div class="col-lg-4">
-                <div class="tilt">
+                <div class="moveLeft">
                 <a href="http://redcloud-design.com/" target="_blank"><img src="assets/img/p02.png" height="200"></a>
                 </div>
             </div>

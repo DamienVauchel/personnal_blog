@@ -15,8 +15,8 @@ class Manager
         // CREATE
     public function createPost($titre, $contenu, $auteur, $photo) // To create one post
     {
-        $statement = $this->database->prepare("   INSERT INTO post (title, content, author, photo, creation_date) 
-                                                  VALUES (?, ?, ?, ?, NOW())");
+        $statement = $this->database->prepare("   INSERT INTO post (title, content, author, photo, creation_date, update_date) 
+                                                  VALUES (?, ?, ?, ?, NOW(), NOW())");
         $statement->execute(array($titre, $contenu, $auteur, $photo));
         return $statement;
     }
@@ -42,7 +42,7 @@ class Manager
         $posts = array();
         $statement = $this->database->query(" SELECT *
                                                 FROM post
-                                                ORDER BY creation_date DESC
+                                                ORDER BY update_date DESC
                                                 LIMIT ".$paginationInfos['firstToRead'].",".$paginationInfos['postsPerPage']);
 //        die(var_dump($statement));
         while ($datas = $statement->fetch())
@@ -53,12 +53,12 @@ class Manager
         return $posts;
     }
 
-    public function getFourLastPosts()
+    public function getFourLastPosts() // To get the 4 last posts for the home page
     {
         $posts = array();
         $statement = $this->database->query("SELECT *
                                              FROM post
-                                             ORDER BY creation_date DESC
+                                             ORDER BY update_date DESC
                                              LIMIT 4");
         while ($datas = $statement->fetch())
         {
@@ -79,7 +79,7 @@ class Manager
     public function updatePostWithPhoto($title, $content, $author, $photo, $id) // To update post when a photo is updated
     {
         $statement = $this->database->prepare("  UPDATE post
-                                                 SET title = ?, content = ?, author = ?, photo = ?, date_creation = NOW()
+                                                 SET title = ?, content = ?, author = ?, photo = ?, update_date = NOW()
                                                  WHERE id = ?");
         $statement->execute(array($title, $content, $author, $photo, $id));
         return $statement;
@@ -88,7 +88,7 @@ class Manager
     public function updatePostNoPhoto($title, $content, $author, $id) // To update a photo without photo updated
     {
         $statement = $this->database->prepare("  UPDATE post 
-                                                 SET title = ?, content = ?, author = ?, creation_date = NOW() 
+                                                 SET title = ?, content = ?, author = ?, update_date = NOW() 
                                                  WHERE id = ?");
         $statement->execute(array($title, $content, $author, $id));
         return $statement;

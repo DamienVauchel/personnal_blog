@@ -45,15 +45,15 @@
                                 <small><em>Le cadre peut être redimensionné</em></small>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <div class="form-group row">
-                                <input type="submit" name="sendmsgModal" class="btn btn-default btn-lg pull-right" right="" value="Envoyer le message">
-                            </div>
-                        </div>
-                    </form>
-                    <!--                    FIN CONTACT                                                    -->
                 </div>
             </div>
+            <div class="modal-footer">
+                <div class="form-group row">
+                    <input type="submit" name="sendmsgModal" class="btn btn-default btn-lg pull-right" right="" value="Envoyer le message">
+                </div>
+            </div>
+            </form>
+            <!--                    FIN CONTACT FORM                                               -->
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
