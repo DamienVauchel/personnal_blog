@@ -52,5 +52,3 @@ elseif(isset($_GET['contact']))
 $content = ob_get_clean();
 
 require 'pages/templates/default.php';
-
-die();
