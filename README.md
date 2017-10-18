@@ -16,11 +16,13 @@ More easy, you can download MAMP, WAMP or WAMPP depend of your OS
 ## Installation
 
 Download project or clone it in the htdocs or www depend of your OS
-If you are using Linux, check your permissions:
+
+If you are using XAMPP on Linux, check your permissions:
+Go to /opt/lampp/htdocs/ open a bash and type:
 ```bash
-    $sudo /opt/lampp/htdocs/ ls
+    $sudo ls -l
 ```
-Change permissions to everybody to be able to update informations in every repository's folders.
+Change permissions for everybody to be able to update informations in every repository's folders.
 
 Open the file app/Database.php and put your parameters like this:
 
