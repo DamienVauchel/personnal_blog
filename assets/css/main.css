@@ -450,6 +450,31 @@ a .fa-github:hover
 	color: #fff !important;
 }
 
+#suppr_mess, #add_mess
+{
+	z-index: 9999;
+	width: 100%;
+	background: rgba(104, 157, 113, 0.9);
+	position: absolute;
+	color: #fff;
+	font-weight: bold;
+	text-align: center;
+	padding: 20px 0;
+}
+
+#mail_sent
+{
+	z-index: 9999;
+	width: 100%;
+	background: rgba(104, 157, 113, 0.9);
+	position: absolute;
+	color: #fff;
+	font-weight: bold;
+	text-align: center;
+	padding: 20px 0;
+	margin-top: 20px;
+}
+
 /*#########################################################################################################
 ########################### TABLETS AND SMARTPHONES #######################################################
 #########################################################################################################*/

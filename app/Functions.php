@@ -30,6 +30,7 @@ class Functions
 
                 mail($to, $subject, $body, 'From: '.$header);
                 unset($_SESSION['tableError']);
+                $_SESSION['mail_sent'] = "OK";
             }
             else
             {

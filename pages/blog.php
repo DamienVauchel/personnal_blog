@@ -8,8 +8,32 @@
         </div><!-- row -->
     </div><!-- container -->
 </div><!--  bluewrap -->
-
-
+<?php
+if (!empty($_SESSION['suppr_mess']))
+{
+    ?>
+    <div id="suppr_mess">Le post a bien été supprimé!</div>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            setTimeout(function(){$("#suppr_mess").fadeOut('normal');}, 3000);
+        });
+    </script>
+    <?php
+    unset($_SESSION['suppr_mess']);
+}
+elseif (!empty($_SESSION['add_mess']))
+{
+    ?>
+    <div id="add_mess">Le post a bien été ajouté!</div>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            setTimeout(function(){$("#add_mess").fadeOut('normal');}, 3000);
+        });
+    </script>
+    <?php
+    unset($_SESSION['add_mess']);
+}
+?>
 <div class="container desc">
     <div class="col-md-12">
         <?php foreach($posts as $post):
