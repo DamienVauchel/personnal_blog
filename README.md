@@ -5,15 +5,15 @@
 ## Project's origins
 This project is linked to the OpenClassRooms Da PHP/Symfony's studies. It is the 5th project in which it is asked to create a blog from A to Z in PHP without signup/login system.
 
-##Prerequisite
+## Prerequisite
 
-*PHP 7
-*MySQL
-*Apache or IIS depend of your OS
+* PHP 7
+* MySQL
+* Apache or IIS depend of your OS
 
 More easy, you can download MAMP, WAMP or WAMPP depend of your OS
 
-##Installation
+## Installation
 
 Download project or clone it in the htdocs or www depend of your OS
 If you are using Linux, check your permissions:
@@ -22,10 +22,10 @@ Change permissions to everybody to be able to update informations in every repos
 
 Open the file app/Database.php and put your parameters like this:
 
-*$dbHost: "localhost"
-*$dbName: "personnal_blog"
-*$dbUser: type your username to access MySQL databases ("root" by default)
-*$dbUserPassword: type your password to access MySQL databases ("root" or "" by default)
+* $dbHost: "localhost"
+* $dbName: "personnal_blog"
+* $dbUser: type your username to access MySQL databases ("root" by default)
+* $dbUserPassword: type your password to access MySQL databases ("root" or "" by default)
 
 Now, create the database:
 1. Go on URL localhost/phpmyadmin
@@ -35,8 +35,7 @@ Now, create the database:
 5. Load the folder's root's database.sql to have some test datas
 6. Click 'Go'
 
-
-At this time you can go on the url (remove "_dev" to switch in the prod environment):
+Now, you can go on the URL:
 
 http://localhost/personnal_blog
 
