@@ -17,7 +17,9 @@ More easy, you can download MAMP, WAMP or WAMPP depend of your OS
 
 Download project or clone it in the htdocs or www depend of your OS
 If you are using Linux, check your permissions:
+```
     $sudo /opt/lampp/htdocs/ ls
+```
 Change permissions to everybody to be able to update informations in every repository's folders.
 
 Open the file app/Database.php and put your parameters like this:
