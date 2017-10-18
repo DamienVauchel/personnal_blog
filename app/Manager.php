@@ -73,29 +73,4 @@ class Manager
                                                 WHERE id = $id");
         return $statement;
     }
-
-//    public function getAllCategories()
-//    {
-//        $categories = [];
-//        $statement = $this->database->query("   SELECT *
-//                                                FROM category");
-//        while($datas = $statement->fetch())
-//        {
-//            $categories[] = new Category($datas);
-//        }
-//
-//        return $categories;
-//    }
-
-//    public function findCategory($id)
-//    {
-//        $statement = $this->database->prepare("   SELECT *
-//                                                  FROM category
-//                                                  WHERE id = ?");
-//        $statement->execute(array($id));
-//        $datas = $statement->fetch();
-//        $category = new Category($datas);
-//
-//        return $category;
-//    }
 }
