@@ -63,6 +63,7 @@ class Controller
             if (empty(array_filter($tableError)))
             {
                 $this->post_manager->createPost($title, $content, $author, $photo);
+                $_SESSION['add_mess'] = "OK";
                 header("Location: index.php?blog");
             }
             else
@@ -184,8 +185,7 @@ class Controller
             unlink("assets/post_photo/".$photo); // Delete photo file from the server
 
             $this->post_manager->delete($id);
-
-            Database::disconnect();
+            $_SESSION['suppr_mess'] = "OK";
             header("Location: index.php?blog");
         }
     }

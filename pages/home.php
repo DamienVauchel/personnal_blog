@@ -24,6 +24,19 @@ elseif($datas && !empty($tableError))
     </script>
 <?php
 }
+
+if (!empty($_SESSION['mail_sent']))
+{
+    ?>
+    <div id="mail_sent">Le mail a bien été envoyé!</div>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            setTimeout(function(){$("#mail_sent").fadeOut('normal');}, 3000);
+        });
+    </script>
+    <?php
+    unset($_SESSION['mail_sent']);
+}
 ?>
 
 <div id="headerwrap">
