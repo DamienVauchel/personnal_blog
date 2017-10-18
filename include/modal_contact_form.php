@@ -1,17 +1,16 @@
 <!-- MODAL FOR CONTACT -->
 <!-- Modal -->
-<?php require "../controller/contact.php";?>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title text-center" id="myModalLabel"><b>Pour me contacter</b></h2>
+                <h2 class="modal-title text-center" id="myModalLabel"><b>Pour me contacter</b></h2>
             </div>
             <div class="modal-body">
                 <div class="row centered">
                     <!--                   CONTACT                                                                   -->
-                    <form class="form" action="index.php" method="post" autocomplete="off">
+                    <form class="form" action="../index.php" method="post" autocomplete="off">
                         <div class="form-group row">
                             <label for="nom" class="col-sm-2 col-form-label">Nom</label>
                             <div class="col-sm-10">

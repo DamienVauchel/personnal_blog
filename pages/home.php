@@ -1,4 +1,4 @@
-<?php require "header.php"; ?>
+<?php \App\Functions::contact(); ?>
 
 <div id="headerwrap">
     <div class="container">
@@ -54,19 +54,19 @@
             <br>
             <div class="col-lg-4">
                 <div class="tilt">
-                <a href="http://chaletsdeluxe.damienvauchel.com/"><img src="../assets/img/p01.png" height="200"></a>
+                <a href="http://chaletsdeluxe.damienvauchel.com/" target="_blank"><img src="assets/img/p01.png" height="200"></a>
                 </div>
             </div>
 
             <div class="col-lg-4">
                 <div class="tilt">
-                <a href="http://www.travel-agency.damienvauchel.com/"><img src="../assets/img/p03.png" height="200"></a>
+                <a href="http://www.travel-agency.damienvauchel.com/" target="_blank"><img src="assets/img/p03.png" height="200"></a>
                 </div>
             </div>
 
             <div class="col-lg-4">
                 <div class="tilt">
-                <a href="http://redcloud-design.com/"><img src="../assets/img/p02.png" height="200"></a>
+                <a href="http://redcloud-design.com/" target="_blank"><img src="assets/img/p02.png" height="200"></a>
                 </div>
             </div>
         </div><!-- row -->
@@ -81,7 +81,7 @@
     <h4 class="text-center">Pour les questions d'ordre général, vous pouvez utiliser le formulaire ci-joint.</h4>
     <h4 class="text-center">Je vous répondrez dès que possible.</h4>
     <br>
-    <form class="form" action="index.php" method="post" autocomplete="off">
+    <form class="form" action="index.php?home" method="post" autocomplete="off">
         <div class="form-group row">
             <label for="nom" class="col-sm-2 col-form-label">Nom</label>
             <div class="col-sm-10">
@@ -121,6 +121,4 @@
         </div>
     </form>
 </div>
-<!--                    FIN CONTACT                                                    -->      
-
-<?php require "footer.php"; ?>
+<!--                    FIN CONTACT                                                    -->

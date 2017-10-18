@@ -1,4 +1,5 @@
 <?php
+namespace App;
 class Database
 {
     private static $dbHost = "localhost";
@@ -12,7 +13,7 @@ class Database
     {
         try
         {
-            self::$connection = new PDO("mysql:host=" . self::$dbHost . "; dbname=" . self::$dbName, self::$dbUser, self::$dbUserPassword);
+            self::$connection = new \PDO("mysql:host=" . self::$dbHost . "; dbname=" . self::$dbName, self::$dbUser, self::$dbUserPassword);
         }
         catch (PDOException $e)
         {
@@ -21,7 +22,8 @@ class Database
         return self::$connection;
     }
 
-    public static function disconnect() {
+    public static function disconnect()
+    {
         self::$connection = null;
     }
 }
