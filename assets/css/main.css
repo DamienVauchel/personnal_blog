@@ -14,7 +14,7 @@
 /* OVERALL ASPECT */
 
 body {
-    background-color: #f2f2f2;
+    background-color: #eee;
     font-family: "Lato";
     font-weight: 300;
     font-size: 16px;
@@ -161,10 +161,21 @@ a .fa-github:hover
           transform: rotate(-10deg);
 }
 
+/* MOVE UP */
+.moveUp
+{
+	transition: transform .3s ease-out;
+	display: inline-block;
+}
+
+.moveUp:hover
+{
+	transform: translate(0, -5px);
+}
+
 /* ==========================================================================
    Wrap Sections
    ========================================================================== */
-
 #headerwrap {
 	background: url(../img/header-bg.jpg) no-repeat center top;
 	margin-top: -10px;
@@ -204,7 +215,7 @@ a .fa-github:hover
 
 /* Dark Grey Wrap */
 #dg {
-	background: #e0e0e0;
+	background: #fff;
 	padding-top: 70px;
 	padding-bottom: 70px;
 	text-align: center;
@@ -277,6 +288,11 @@ a .fa-github:hover
 	color: #831FCC;
 }
 
+#gotop i:hover
+{
+	color: #fff !important;
+}
+
 /****** SECTIONS *****/
 .w {
 	padding-top: 35px;
@@ -324,7 +340,6 @@ a .fa-github:hover
 /***** MODAL CONTACT *****/
 .modal-content {
 	border-radius: 0px;
-
 }
 
 .modal-header {
@@ -347,4 +362,9 @@ a .fa-github:hover
 .modal-footer {
 	background: #f2f2f2;
 	margin-top: 0px; 
+}
+
+.modal-lg
+{
+	max-width: 900px !important;
 }

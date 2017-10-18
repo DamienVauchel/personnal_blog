@@ -2,6 +2,7 @@
 use App\Controller;
 
 $post_controller = new Controller();
+$paginationInfos = $post_controller->paginate();
 ?>
 
 <div id="blue">
@@ -21,7 +22,7 @@ $post_controller = new Controller();
         <?php foreach($posts as $post):
             ?>
             <a href="index.php?post&id=<?= $post->getId(); ?>">
-                <div class="row thumbnail">
+                <div class="row thumbnail moveUp">
                     <div class="col-md-6">
                         <img src="assets/post_photo/<?= $post->getPhoto(); ?>" alt="" style="max-width: 100%;">
                     </div>
@@ -47,6 +48,27 @@ $post_controller = new Controller();
                 </div><!-- row -->
             </a>
             <hr>
+            <br>
         <?php endforeach; ?>
+
+        <nav aria-label="Page navigation example" class="text-center">
+            <ul class="pagination justify-content-center">
+                <?php for($i = 1; $i <= $paginationInfos['pagesCount']; $i++)
+                {
+                    if($i == $paginationInfos['actualPage'])
+                    {
+                        ?>
+                        <li class="page-item active"><a class="page-link" href="index.php?blog&page=<?= $i; ?>"><?= $i; ?></a></li>
+                        <?php
+                    }
+                    else
+                    {
+                        ?>
+                        <li class="page-item"><a class="page-link" href="index.php?blog&page=<?= $i; ?>"><?= $i; ?></a></li>
+                        <?php
+                    }
+                } ?>
+            </ul>
+        </nav>
     </div>
 </div>

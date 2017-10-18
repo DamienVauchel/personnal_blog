@@ -59,12 +59,21 @@
         </div><!--/.nav-collapse -->
     </div>
 </div>
+<div id="header"></div>
 <?= $content; ?>
 <!-- FOOTER -->
 <div id="f">
     <div class="container">
         <div class="row centered">
-            <a href="http://www.damienvauchel.com" target="_blank"><i class="fa fa-user" aria-hidden="true"></i></a><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a><a href="#" target="_blank"><i class="fa fa-twitter"></i></a><a href="#" target="_blank"><i class="fa fa-facebook"></i></a><a href="#" target="_blank"><i class="fa fa-github"></i></a>
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <a href="http://www.damienvauchel.com" target="_blank"><i class="fa fa-user" aria-hidden="true"></i></a>
+                <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                <a href="#" target="_blank"><i class="fa fa-github"></i></a>
+            </div>
+            <div class="col-md-1"><a href="#header" id="gotop"><i class="fa fa-angle-up" aria-hidden="true"></i></a></div>
         </div><!-- row -->
     </div><!-- container -->
 </div><!-- Footer -->
@@ -76,5 +85,22 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
+<script>
+    $(function ()
+    {
+        $('#gotop').on('click', function(e)
+        {
+            e.preventDefault();
+            var hash = this.hash;
+            $('html, body').animate(
+                {
+                    scrollTop: $(this.hash).offset().top
+                }, 1000, function()
+                {
+                    window.location.hash = hash;
+                });
+        });
+    });
+</script>
 </body>
 </html>

@@ -184,4 +184,46 @@ class Controller
         Database::disconnect();
         include "pages/blog.php";
     }
+
+    public function getHomeList() // To get the 4 last posts for the home page
+    {
+        $db = Database::connect();
+        $post_manager = new Manager($db);
+        $posts = $post_manager->getFourLastPosts($db);
+        Database::disconnect();
+        return $posts;
+    }
+
+    public function paginate()
+    {
+        $paginationInfos = [];
+
+        $postsPerPage = 5;
+        $paginationInfos += ["postsPerPage" => $postsPerPage];
+
+        $total = $this->post_manager->getTotalForPaginate();
+        $pagesCount = ceil($total/$postsPerPage);
+        $paginationInfos += ["pagesCount" => $pagesCount];
+
+        if(isset($_GET['page']))
+        {
+            $actualPage = intval($_GET['page']);
+            $paginationInfos += ["actualPage" => $actualPage];
+
+            if($actualPage > $pagesCount)
+            {
+                $actualPage = $pagesCount;
+            }
+        }
+        else
+        {
+            $actualPage = 1;
+            $paginationInfos += ["actualPage" => $actualPage];
+        }
+
+        $firstToRead = ($actualPage-1) * $postsPerPage; // On calcul la première entrée à lire
+        $paginationInfos += ["firstToRead" => $firstToRead];
+
+        return $paginationInfos;
+    }
 }
