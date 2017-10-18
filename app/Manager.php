@@ -37,19 +37,19 @@ class Manager
     {
         $controller = new Controller();
         $paginationInfos = $controller->paginate();
-//        die(var_dump($paginationInfos));
 
         $posts = array();
-        $statement = $this->database->query(" SELECT *
+        $statement = $this->database->prepare(" SELECT *
                                                 FROM post
                                                 ORDER BY update_date DESC
-                                                LIMIT ".$paginationInfos['firstToRead'].",".$paginationInfos['postsPerPage']);
-//        die(var_dump($statement));
+                                                LIMIT :firstToRead , :postsPerPage");
+        $statement->bindParam(':firstToRead', $paginationInfos['firstToRead'], \PDO::PARAM_INT);
+        $statement->bindParam(':postsPerPage', $paginationInfos['postsPerPage'], \PDO::PARAM_INT);
+        $statement->execute();
         while ($datas = $statement->fetch())
         {
             $posts[] = new Post($datas);
         }
-//        die(var_dump($posts));
         return $posts;
     }
 
