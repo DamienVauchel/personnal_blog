@@ -140,11 +140,13 @@ class Controller
                     unlink("assets/post_photo/".$actualPhoto); // Delete actual photo file from the server
 
                     $this->post_manager->updatePostWithPhoto($title, $content, $author, $photo, $id);
+                    $_SESSION['update_post'] = "OK";
                     header("Location: index.php?post&id=".$id);
                 }
                 else
                 {
                     $this->post_manager->updatePostNoPhoto($title, $content, $author, $id);
+                    $_SESSION['update_post'] = "OK";
                     header("Location: index.php?post&id=".$id);
                 }
             }

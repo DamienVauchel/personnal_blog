@@ -23,6 +23,21 @@
     </div><!-- container -->
 </div><!--  bluewrap -->
 
+<?php
+if (!empty($_SESSION['update_post']))
+{
+?>
+<div id="update_post">Le post a bien été mis à jour!</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        setTimeout(function(){$("#update_post").fadeOut('normal');}, 3000);
+    });
+</script>
+<?php
+unset($_SESSION['update_post']);
+}
+?>
+
 <div class="container desc">
     <div class="row thumbnail home-post-mobile">
         <br>
