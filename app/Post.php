@@ -8,8 +8,8 @@ class Post
     protected $chapo;
     protected $content;
     protected $author;
-    protected $creation_date;
-    protected $update_date;
+    protected $creation_date_fr;
+    protected $update_date_fr;
     protected $photo;
 
     // CONSTRUCT
@@ -25,8 +25,8 @@ class Post
         $this->setId($datas["id"]);
         $this->setAuthor($datas["author"]);
         $this->setContent($datas["content"]);
-        $this->setCreationDate($datas["creation_date"]);
-        $this->setUpdateDate($datas["update_date"]);
+        $this->setCreationDate($datas["creation_date_fr"]);
+        $this->setUpdateDate($datas["update_date_fr"]);
         $this->setPhoto($datas["photo"]);
     }
 
@@ -58,12 +58,12 @@ class Post
 
     public function getCreationDate()
     {
-        return $this->creation_date;
+        return $this->creation_date_fr;
     }
 
     public function getUpdateDate()
     {
-        return $this->update_date;
+        return $this->update_date_fr;
     }
 
     public function getPhoto()
@@ -99,12 +99,12 @@ class Post
 
     public function setCreationDate($creation_date)
     {
-        $this->creation_date = $creation_date;
+        $this->creation_date_fr = $creation_date;
     }
 
     public function setUpdateDate($update_date)
     {
-        $this->update_date = $update_date;
+        $this->update_date_fr = $update_date;
     }
 
     public function setPhoto($photo)

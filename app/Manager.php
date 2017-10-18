@@ -24,7 +24,7 @@ class Manager
         // READ
     public function getPost($id) // To get one post by its id
     {
-        $statement = $this->database->prepare("   SELECT *
+        $statement = $this->database->prepare("   SELECT id, title, content, author, photo, DATE_FORMAT(creation_date, 'le %d/%m/%Y à %Hh%imin%ss') AS creation_date_fr, DATE_FORMAT(update_date, '%d/%m/%Y à %Hh%imin%ss') AS update_date_fr
                                                   FROM post
                                                   WHERE id = ?");
         $statement->execute(array($id));
@@ -39,7 +39,7 @@ class Manager
         $paginationInfos = $controller->paginate();
 
         $posts = array();
-        $statement = $this->database->prepare(" SELECT *
+        $statement = $this->database->prepare(" SELECT id, title, content, author, DATE_FORMAT(creation_date, 'le %d/%m/%Y à %Hh%imin%ss') AS creation_date_fr, DATE_FORMAT(update_date, '%d/%m/%Y à %Hh%imin%ss') AS update_date_fr, photo
                                                 FROM post
                                                 ORDER BY update_date DESC
                                                 LIMIT :firstToRead , :postsPerPage");
@@ -56,7 +56,7 @@ class Manager
     public function getFourLastPosts() // To get the 4 last posts for the home page
     {
         $posts = array();
-        $statement = $this->database->query("SELECT *
+        $statement = $this->database->query("SELECT id, title, content, author, DATE_FORMAT(creation_date, 'le %d/%m/%Y à %Hh%imin%ss') AS creation_date_fr, DATE_FORMAT(update_date, '%d/%m/%Y à %Hh%imin%ss') AS update_date_fr, photo
                                              FROM post
                                              ORDER BY update_date DESC
                                              LIMIT 4");
