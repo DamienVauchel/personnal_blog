@@ -450,7 +450,7 @@ a .fa-github:hover
 	color: #fff !important;
 }
 
-#suppr_mess, #add_mess
+#suppr_mess, #add_mess, #update_post
 {
 	z-index: 9999;
 	width: 100%;
