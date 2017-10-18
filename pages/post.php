@@ -1,13 +1,3 @@
-<?php
-use App\Controller;
-
-if(!empty($_GET['id']) && isset($_POST["suppr"]))
-{
-    $post_controller = new Controller();
-    $post_controller->supprPost();
-}
-?>
-
 <div id="blue">
     <div class="container">
         <div class="row centered">

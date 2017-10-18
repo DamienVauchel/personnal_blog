@@ -1,11 +1,6 @@
 <?php
-use App\Controller;
-
-$datas = $_POST;
-if ($datas)
+if ($_POST)
 {
-    $controller = new Controller();
-    $controller->addPost($datas);
     $tableError = array_filter($_SESSION['tableError']);
 }
 ?>

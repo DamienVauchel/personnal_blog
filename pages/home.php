@@ -1,13 +1,7 @@
 <?php
-use App\Functions;
-use App\Controller;
-
-Functions::contact();
 $datas = $_POST;
-
 if ($datas)
 {
-    $controller = new Controller();
     $tableError = array_filter($_SESSION['tableError']);
 }
 else
@@ -30,19 +24,6 @@ elseif($datas && !empty($tableError))
     </script>
 <?php
 }
-elseif(isset($_GET['contact']))
-{
-    ?>
-    <script>
-        $(window).load(function() {
-            $("html, body").animate({ scrollTop: $("#contact").offset().top-50 }, 500);
-        });
-    </script>
-    <?php
-}
-
-$controller = new Controller();
-$posts = $controller->getHomeList();
 ?>
 
 <div id="headerwrap">
@@ -129,19 +110,19 @@ $posts = $controller->getHomeList();
         <div class="row centered">
             <h4>DERNIERES REALISATIONS</h4>
             <br>
-            <div class="col-lg-4">
+            <div class="col-md-4">
                 <div class="moveLeft">
                 <a href="http://chaletsdeluxe.damienvauchel.com/" target="_blank"><img src="assets/img/p01.png" height="200"></a>
                 </div>
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-md-4">
                 <div class="moveRight">
                 <a href="http://www.travel-agency.damienvauchel.com/" target="_blank"><img src="assets/img/p03.png" height="200"></a>
                 </div>
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-md-4">
                 <div class="moveLeft">
                 <a href="http://redcloud-design.com/" target="_blank"><img src="assets/img/p02.png" height="200"></a>
                 </div>

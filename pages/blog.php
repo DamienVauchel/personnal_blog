@@ -1,10 +1,3 @@
-<?php
-use App\Controller;
-
-$post_controller = new Controller();
-$paginationInfos = $post_controller->paginate();
-?>
-
 <div id="blue">
     <div class="container">
         <div class="row centered">

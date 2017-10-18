@@ -17,6 +17,10 @@ class Controller
         // Get a page
     public function home() // To go to home page
     {
+        $db = Database::connect();
+        $post_manager = new Manager($db);
+        $posts = $post_manager->getFourLastPosts($db);
+        Database::disconnect();
         include "pages/home.php";
     }
 
@@ -191,17 +195,9 @@ class Controller
         $db = Database::connect();
         $post_manager = new Manager($db);
         $posts = $post_manager->getAll($db);
-        Database::disconnect();
+        $paginationInfos = $this->paginate();
         include "pages/blog.php";
-    }
-
-    public function getHomeList() // To get the 4 last posts for the home page
-    {
-        $db = Database::connect();
-        $post_manager = new Manager($db);
-        $posts = $post_manager->getFourLastPosts($db);
-        Database::disconnect();
-        return $posts;
+        return $paginationInfos;
     }
 
     public function paginate()
