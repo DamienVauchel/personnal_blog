@@ -11,7 +11,7 @@ This project is linked to the OpenClassRooms Da PHP/Symfony's studies. It is the
 * MySQL
 * Apache or IIS depend of your OS
 
-More easy, you can download MAMP, WAMP or XAMPP depend of your OS
+Easier: You can download MAMP, WAMP or XAMPP depend of your OS
 
 ## Add-ons and template
 ### Add-ons
