@@ -13,6 +13,15 @@ This project is linked to the OpenClassRooms Da PHP/Symfony's studies. It is the
 
 More easy, you can download MAMP, WAMP or WAMPP depend of your OS
 
+## Add-ons and template
+### Add-ons
+* Bootstrap
+* jQuery
+* Font Awesome
+
+### Template
+[Spot](http://blacktie.co/demo/spot/) by [BlackTie](http://blacktie.co/2013/10/spot-freelance-agency-theme/)
+
 ## Installation
 
 Download project or clone it in the htdocs or www depend of your OS
