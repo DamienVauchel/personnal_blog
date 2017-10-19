@@ -24,7 +24,7 @@ class Manager
         // READ
     public function getPost($id) // To get one post by its id
     {
-        $statement = $this->database->prepare("   SELECT id, title, content, author, photo, DATE_FORMAT(creation_date, 'le %d/%m/%Y à %Hh%imin%ss') AS creation_date_fr, DATE_FORMAT(update_date, '%d/%m/%Y à %Hh%imin%ss') AS update_date_fr
+        $statement = $this->database->prepare("   SELECT id, title, content, author, photo, DATE_FORMAT(creation_date, 'le %d/%m/%Y à %Hh%imin%ss') AS creation_date_fr, DATE_FORMAT(update_date, 'le %d/%m/%Y à %Hh%imin%ss') AS update_date_fr
                                                   FROM post
                                                   WHERE id = ?");
         $statement->execute(array($id));
