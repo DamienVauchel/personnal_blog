@@ -61,7 +61,7 @@ if ($datas)
                 <div class="form-group row">
                     <label for="content" class="col-sm-2 col-form-label">Contenu du post</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control animated" rows="10" name="content"><?= $post->getContent(); ?></textarea>
+                        <textarea class="form-control animated" rows="10" name="content"><?= str_replace('<br />', '', $post->getContent()); ?></textarea>
                         <?php if (isset($tableError[2]['content'])) {echo "<span class='help-inline col-sm-12'>".$tableError[2]['content']."</span>";} ?>
                         <small><em>Le cadre peut être redimensionné</em></small>
                     </div>
