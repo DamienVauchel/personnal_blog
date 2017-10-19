@@ -43,7 +43,7 @@ if (!empty($_SESSION['mail_sent']))
     <div class="container">
         <div class="row centered">
             <div class="col-lg-8 col-lg-offset-2">
-            <h1><b>Damien Vauchel</b></h1>
+                <a href="http://www.damienvauchel.com" target="_blank"><h1><b>DAMIEN VAUCHEL</b></h1></a>
             <h2>Le développement, j'ai ça dans le sang!</h2>
             <br>
             <a href="assets/docs/online-2017-CV-Damien-Vauchel.pdf" class="btn btn-default" target="_blank">Télécharger le CV</a>
@@ -52,38 +52,41 @@ if (!empty($_SESSION['mail_sent']))
     </div><!-- container -->
 </div><!-- headerwrap -->
 
-<div id="dg">
-    <div class="container" id="home-container">
-        <div class="row centered" id="home-row">
-            <h4>DERNIERS ARTICLES DU BLOG</h4>
-            <br>
-            <?php foreach($posts as $post):
-                ?>
-                <div class="col-sm-3">
-                    <div class="moveUp">
-                        <a href="index.php?post&id=<?= $post->getId(); ?>">
-                            <div class="thumbnail home-post home-post-mobile">
-                                <div>
-                                    <img class="img-responsive center-block" src="assets/post_photo/<?= $post->getPhoto(); ?>" alt="">
-                                </div>
-                                <br>
-                                <div>
-                                    <h2 class="text-center home-post-title"><b><?= strtoupper($post->getTitle()); ?></b></h2>
-                                    <div class="text-right">
-                                        <small style="text-decoration: underline;">
-                                            <i class="fa fa-clock-o" aria-hidden="true"></i><?= $post->getUpdateDate(); ?>
-                                        </small>
+<a href="index.php?blog">
+    <div id="dg">
+        <div class="container" id="home-container">
+            <div class="row centered" id="home-row">
+                <h4>DERNIERS ARTICLES DU BLOG</h4>
+                <br>
+                <?php foreach($posts as $post):
+                    ?>
+                    <div class="col-sm-3">
+                        <div class="moveUp">
+                            <a href="index.php?post&id=<?= $post->getId(); ?>">
+                                <div class="thumbnail home-post home-post-mobile">
+                                    <div>
+                                        <img class="img-responsive center-block" src="assets/post_photo/<?= $post->getPhoto(); ?>" alt="">
                                     </div>
-                                    <p class="text-right">... Lire l'article</p>
-                                </div>
-                            </div><!-- row -->
-                        </a>
+                                    <br>
+                                    <div>
+                                        <h2 class="text-center home-post-title"><b><?= strtoupper($post->getTitle()); ?></b></h2>
+                                        <div class="text-right">
+                                            <small style="text-decoration: underline;">
+                                                <i class="fa fa-clock-o" aria-hidden="true"></i><?= $post->getUpdateDate(); ?>
+                                            </small>
+                                        </div>
+                                        <p class="text-right">... Lire l'article</p>
+                                    </div>
+                                </div><!-- row -->
+                            </a>
+                        </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
-        </div><!-- row -->
-    </div><!-- container -->
-</div><!-- DG -->
+                <?php endforeach; ?>
+            </div><!-- row -->
+        </div><!-- container -->
+    </div><!-- DG -->
+</a>
+
 
 <div class="container w">
     <div class="row centered">
@@ -149,8 +152,6 @@ if (!empty($_SESSION['mail_sent']))
 <div class="container tab-pane" id="contact">
     <br>
     <h2 class="text-center"><b>Pour me contacter</b></h2>
-    <h4 class="text-center contact-title">Pour les questions d'ordre général, vous pouvez utiliser le formulaire ci-joint.</h4>
-    <h4 class="text-center contact-title">Je vous répondrez dès que possible.</h4>
     <br>
     <form class="form" action="index.php?home" method="post" autocomplete="off">
         <div class="form-group row">
