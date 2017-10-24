@@ -45,6 +45,9 @@ if ($_POST)
             <div class="form-group row">
                 <label for="content" class="col-sm-2 col-form-label">Contenu du post</label>
                 <div class="col-sm-10">
+                    <div class="text-center" id="add-warning">
+                        Vous écrivez un nouveau post, merci de ne pas diffuser de contenu vulgaire ou injurieux.
+                    </div>
                     <textarea name="content" class="form-control animated" placeholder="Tapez votre contenu ici" rows="10"><?php if (!empty($_POST['content'])) {echo $_POST['content'];} ?></textarea>
                     <small><em>Le cadre peut être redimensionné</em></small>
                     <br>
