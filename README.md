@@ -27,7 +27,7 @@ Download project or clone it in the htdocs or www depend of your OS
 If you are using XAMPP on Linux, check your permissions:
 Go to /opt/lampp/htdocs/ open a bash and type:
 ```bash
-    $sudo ls -l
+    $  sudo ls -l
 ```
 Change permissions for everybody to be able to update informations in every repository's folders.
 
