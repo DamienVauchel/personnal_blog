@@ -42,8 +42,8 @@ Now, create the database:
 1. Go on URL localhost/phpmyadmin
 2. Click "New Database"
 3. Type "personnal_blog" and click 'Create'
-4. Click on your new databe "personnal_blog" and then "Import"
-5. Load the folder's root's database.sql to have some test datas
+4. Click on your new database "personnal_blog" and then "Import"
+5. Load the folder's root's database.sql to have some example datas
 6. Click 'Go'
 
 Now, you can go on the URL:
