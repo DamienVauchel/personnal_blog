@@ -90,7 +90,7 @@ elseif (!empty($_SESSION['add_mess']))
                 if($paginationInfos['actualPage'] >=1 && $paginationInfos['actualPage'] < $paginationInfos['pagesCount']){
                     $next = $paginationInfos['actualPage']+1;
                     ?>
-                    <li class="page-item"><a class="page-link" href="index.php?blog&page=<?= $next; ?>">Next</a></li>
+                    <li class="page-item"><a class="page-link" href="index.php?blog&page=<?= $next; ?>">Suivant</a></li>
                     <?php
                 } ?>
             </ul>
