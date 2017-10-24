@@ -1,7 +1,5 @@
 # Personnal Professional Blog
 
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/f9ae14de-5178-4b1b-80b3-f7b6ad561a8f/small.png)](https://insight.sensiolabs.com/projects/f9ae14de-5178-4b1b-80b3-f7b6ad561a8f)
-
 ## Project's origins
 This project is linked to the OpenClassRooms Da PHP/Symfony's studies. It is the 5th project in which it is asked to create a blog from A to Z in PHP without signup/login system.
 
